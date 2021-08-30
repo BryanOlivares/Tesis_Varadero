@@ -3,7 +3,7 @@
         <table class="table table-striped">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">#.</th>
+                    <th scope="col">#</th>
                     <th scope="col">Service</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido</th>
