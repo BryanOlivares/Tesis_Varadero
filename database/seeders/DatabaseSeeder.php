@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         //\App\Models\CreateReservation::factory(1)->create();
-        //$this->call(RoleSeeder::class);
-        //$this->call(UserSeeder::class);
+        $this->call(RoleSeeder::class);
+        $this->call(UserSeeder::class);
     }
 
 }
