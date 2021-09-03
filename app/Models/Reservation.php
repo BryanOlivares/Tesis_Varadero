@@ -8,12 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Reservation extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'service',
-        'name',
-        'lastname',
-        'date',
-        'time',
-        'capacity',
-    ];
+    protected $fillable = ['service'];
+ public function users()
+ {
+ return $this->belongsToMany('App\User');
+ }
 }
