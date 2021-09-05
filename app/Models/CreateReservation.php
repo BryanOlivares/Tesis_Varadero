@@ -8,7 +8,7 @@ use App\Models\User;
 
 class CreateReservation extends Model
 {
-    use HasFactory;
+    
     protected $fillable = [
         'service',
         'name',
@@ -18,9 +18,6 @@ class CreateReservation extends Model
         'capacity',
     ];
 
-    public function user()
-    {
-        return $this->belongsTo('App\User');
-    }
+    
 
 }

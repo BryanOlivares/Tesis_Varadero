@@ -21,12 +21,8 @@ class CreateCreateReservationsTable extends Migration
             $table->date('date');
             $table->time('time');
             $table->integer('capacity');
-            $table->unsignedBigInteger('service_id');
-            $table->foreign('service_id')->references('id')->on('services')->onDelete('restrict');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
             $table->timestamps();
- });
+        });
           
     }
 

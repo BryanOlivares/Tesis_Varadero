@@ -27,7 +27,7 @@ class ServiceFactory extends Factory
             'capacity' => $this->faker->numberBetween(1,70),
             'time' => $this->faker->time(),
             'date' => $this->faker->date(),
-            'image' => $this->faker->name(),
+        
             
         ];
     }

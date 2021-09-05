@@ -20,7 +20,6 @@ class CreateServicesTable extends Migration
             $table->integer('capacity');
             $table->time('time');
             $table->date('date');
-            $table->string('image');
             $table->timestamps();
         });
     }

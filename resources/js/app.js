@@ -15,7 +15,8 @@ import Crear from './components/CompleteReservation.vue'
 import Service from './components/Service.vue'
 import ServiceReservation from './components/ServiceReservation.vue'
 import View from './components/ViewReservation.vue'
-import View1 from './components/ViewR1.vue'
+
+
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
@@ -41,10 +42,6 @@ const router = new VueRouter({
           component: Crear
         },
 
-        { path: '/reservations1',
-          name: 'reservations1',
-          component: View1
-        },
         { path: '/home',
           name: 'home',
           component: View,

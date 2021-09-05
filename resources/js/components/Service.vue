@@ -60,7 +60,27 @@
                                 class="form-control"
                                 id="capacity"
                                 placeholder="Aforo del servicio"
-                            />
+                            >
+                        </div>
+                        <div class="my-4">
+                            <label for="hora">Hora</label>
+                            <input
+                                v-model="service.time"
+                                type="time"
+                                class="form-control"
+                                id="time"
+                                placeholder="Hora de inicio-Hora de fin"
+                            >
+                        </div>
+                        <div class="my-4">
+                            <label for="fecha">Fecha</label>
+                            <input
+                                v-model="service.date"
+                                type="date"
+                                class="form-control"
+                                id="date"
+                                placeholder="Fecha de inicio-Fecha de fin"
+                            >
                         </div>
                     </div>
 
@@ -94,6 +114,8 @@
                     <th scope="col">Servicio</th>
                     <th scope="col">Descripción</th>
                     <th scope="col">Aforo</th>
+                    <th scope="col">Hora</th>
+                    <th scope="col">Fecha</th>
                     <th scope="col" colspan="2" style="padding-left: 60px;">Acción</th>
                 </tr>
             </thead>
@@ -103,6 +125,8 @@
                     <td>{{ ser.service }}</td>
                     <td>{{ ser.description }}</td>
                     <td>{{ ser.capacity }}</td>
+                    <td>{{ ser.time }}</td>
+                    <td>{{ ser.date }}</td>
                     <td>
                         <button
                             @click="
@@ -127,7 +151,9 @@ export default {
             service: {
                 service: "",
                 description: "",
-                capacity: ""
+                capacity: "",
+                time: "",
+                date: ""
             },
             id: 0,
             modificar: true,
@@ -167,11 +193,15 @@ export default {
                 this.service.service = data.service;
                 this.service.description = data.description;
                 this.service.capacity = data.capacity;
+                this.service.time = data.time;
+                this.service.date = data.date;
             } else {
                 (this.id = 0), (this.tituloModal = "Crear Servicio");
                 this.service.service = "";
                 this.service.description = "";
                 this.service.capacity = "";
+                this.service.time = "";
+                this.service.date = "";
             }
         },
         cerrarModal() {

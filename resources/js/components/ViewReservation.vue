@@ -14,6 +14,8 @@
                     <th scope="col">Servicio</th>
                     <th scope="col">Descripción</th>  
                     <th scope="col">Aforo Max</th>
+                    <th scope="col">Hora</th>
+                    <th scope="col">Fecha</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,6 +24,8 @@
                     <td>{{crear.service}}</td>
                     <td>{{crear.description}}</td>
                     <td>{{crear.capacity}}</td> 
+                    <td>{{crear.time}}</td> 
+                    <td>{{crear.date}}</td> 
                 </tr>
             </tbody>
         </table>
