@@ -24,9 +24,10 @@ class ServiceFactory extends Factory
         return [
             'service' => $this->faker->name(),
             'description' => $this->faker->paragraph(),
-            'capacity' => $this->faker->numberBetween(1,70),
-            'time' => $this->faker->time(),
-            'date' => $this->faker->date(),
+            'time1' => $this->faker->time(),
+            'time2' => $this->faker->time(),
+            'date1' => $this->faker->date(),
+            'date2' => $this->faker-date(),
         
             
         ];

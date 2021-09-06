@@ -17,9 +17,10 @@ class CreateServicesTable extends Migration
             $table->id();
             $table->string('service');
             $table->string('description');
-            $table->integer('capacity');
-            $table->time('time');
-            $table->date('date');
+            $table->time('time1');
+            $table->time('time2');
+            $table->date('date1');
+            $table->date('date2');
             $table->timestamps();
         });
     }

@@ -12,9 +12,10 @@
                     <th scope="col">#</th>
                     <th scope="col">Servicio</th>
                     <th scope="col">Descripción</th>  
-                    <th scope="col">Aforo Max</th>
-                    <th scope="col">Hora</th>
-                    <th scope="col">Fecha</th>
+                    <th scope="col">Desde</th>
+                    <th scope="col">Hasta</th>
+                    <th scope="col">Desde</th>
+                    <th scope="col">Hasta</th>
                     <th scope="col">Accion</th>
                 </tr>
             </thead>
@@ -23,9 +24,10 @@
                     <th scope="row">{{crear.id}}</th>
                     <td>{{crear.service}}</td>
                     <td>{{crear.description}}</td>
-                    <td>{{crear.capacity}}</td> 
-                    <td>{{crear.time}}</td> 
-                    <td>{{crear.date}}</td> 
+                    <td>{{crear.time1}}</td> 
+                    <td>{{crear.time2}}</td> 
+                    <td>{{crear.date1}}</td>
+                    <td>{{crear.date2}}</td> 
                     <button
                             @click="dirigir()"
                             type="button"

@@ -2205,6 +2205,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2323,16 +2328,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.id = data.id, this.tituloModal = "Modificar Servicio";
         this.service.service = data.service;
         this.service.description = data.description;
-        this.service.capacity = data.capacity;
-        this.service.time = data.time;
-        this.service.date = data.date;
+        this.service.time1 = data.time1;
+        this.service.time2 = data.time2;
+        this.service.date1 = data.date1;
+        this.service.date2 = data.date2;
       } else {
         this.id = 0, this.tituloModal = "Crear Servicio";
         this.service.service = "";
         this.service.description = "";
         this.service.capacity = "";
-        this.service.time = "";
-        this.service.date = "";
+        this.service.time1 = "";
+        this.service.time1 = "";
+        this.service.date2 = "";
+        this.service.date2 = "";
       }
     },
     cerrarModal: function cerrarModal() {
@@ -2551,6 +2559,8 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
 //
 //
 //
@@ -43497,7 +43507,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "modal-body" }, [
-            _c("div", { staticClass: "my-4" }, [
+            _c("div", { staticClass: "my-2" }, [
               _c("label", { attrs: { for: "nombre" } }, [
                 _vm._v("Nombre del servicio")
               ]),
@@ -43529,12 +43539,12 @@ var render = function() {
               })
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "my-4" }, [
-              _c("label", { attrs: { for: "Descripción" } }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "exampleFormControlTextarea1" } }, [
                 _vm._v("Descripción")
               ]),
               _vm._v(" "),
-              _c("input", {
+              _c("textarea", {
                 directives: [
                   {
                     name: "model",
@@ -43545,8 +43555,8 @@ var render = function() {
                 ],
                 staticClass: "form-control",
                 attrs: {
-                  type: "text",
                   id: "description",
+                  rows: "3",
                   placeholder: "Descripción del servicio"
                 },
                 domProps: { value: _vm.service.description },
@@ -43561,37 +43571,37 @@ var render = function() {
               })
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "my-4" }, [
-              _c("label", { attrs: { for: "Aforo" } }, [_vm._v("Aforo")]),
+            _c("div", { staticClass: "my-2" }, [
+              _c("label", { attrs: { for: "Hora" } }, [_vm._v("Hora")]),
               _vm._v(" "),
               _c("input", {
                 directives: [
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.service.capacity,
-                    expression: "service.capacity"
+                    value: _vm.service.time1,
+                    expression: "service.time1"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: {
-                  type: "number",
-                  id: "capacity",
-                  placeholder: "Aforo del servicio"
+                  type: "time",
+                  id: "time1",
+                  placeholder: "Hora de inicio"
                 },
-                domProps: { value: _vm.service.capacity },
+                domProps: { value: _vm.service.time1 },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.service, "capacity", $event.target.value)
+                    _vm.$set(_vm.service, "time1", $event.target.value)
                   }
                 }
               })
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "my-4" }, [
+            _c("div", { staticClass: "my-2" }, [
               _c("label", { attrs: { for: "hora" } }, [_vm._v("Hora")]),
               _vm._v(" "),
               _c("input", {
@@ -43599,53 +43609,81 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.service.time,
-                    expression: "service.time"
+                    value: _vm.service.time2,
+                    expression: "service.time2"
                   }
                 ],
                 staticClass: "form-control",
-                attrs: {
-                  type: "time",
-                  id: "time",
-                  placeholder: "Hora de inicio-Hora de fin"
-                },
-                domProps: { value: _vm.service.time },
+                attrs: { type: "time", id: "time2", placeholder: "Hora final" },
+                domProps: { value: _vm.service.time2 },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.service, "time", $event.target.value)
+                    _vm.$set(_vm.service, "time2", $event.target.value)
                   }
                 }
               })
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "my-4" }, [
-              _c("label", { attrs: { for: "fecha" } }, [_vm._v("Fecha")]),
+            _c("div", { staticClass: "my-2" }, [
+              _c("label", { attrs: { for: "fecha" } }, [
+                _vm._v("Fecha de Inicio")
+              ]),
               _vm._v(" "),
               _c("input", {
                 directives: [
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.service.date,
-                    expression: "service.date"
+                    value: _vm.service.date1,
+                    expression: "service.date1"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: {
                   type: "date",
-                  id: "date",
-                  placeholder: "Fecha de inicio-Fecha de fin"
+                  id: "date1",
+                  placeholder: "Fecha de inicio"
                 },
-                domProps: { value: _vm.service.date },
+                domProps: { value: _vm.service.date1 },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.service, "date", $event.target.value)
+                    _vm.$set(_vm.service, "date1", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "my-2" }, [
+              _c("label", { attrs: { for: "fecha" } }, [_vm._v("Fecha Final")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.service.date2,
+                    expression: "service.date2"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "date",
+                  id: "date2",
+                  placeholder: "Fecha final"
+                },
+                domProps: { value: _vm.service.date2 },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.service, "date2", $event.target.value)
                   }
                 }
               })
@@ -43706,11 +43744,13 @@ var render = function() {
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(ser.description))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(ser.capacity))]),
+            _c("td", [_vm._v(_vm._s(ser.time1))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(ser.time))]),
+            _c("td", [_vm._v(_vm._s(ser.time2))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(ser.date))]),
+            _c("td", [_vm._v(_vm._s(ser.date1))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(ser.date2))]),
             _vm._v(" "),
             _c("td", [
               _c(
@@ -43762,11 +43802,13 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Descripción")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Aforo")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Hora de Inicio")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Hora")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Hora Final")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Fecha")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Fecha de Inicio")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Fecha de Final")]),
         _vm._v(" "),
         _c(
           "th",
@@ -43979,11 +44021,13 @@ var render = function() {
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(crear.description))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(crear.capacity))]),
+            _c("td", [_vm._v(_vm._s(crear.time1))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(crear.time))]),
+            _c("td", [_vm._v(_vm._s(crear.time2))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(crear.date))]),
+            _c("td", [_vm._v(_vm._s(crear.date1))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(crear.date2))]),
             _vm._v(" "),
             _c(
               "button",
@@ -44022,11 +44066,13 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Descripción")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Aforo Max")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Desde")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Hora")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Hasta")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Fecha")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Desde")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Hasta")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Accion")])
       ])

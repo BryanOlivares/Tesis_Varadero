@@ -30,7 +30,7 @@
 
                     <!-- Modal body -->
                     <div class="modal-body">
-                        <div class="my-4">
+                        <div class="my-2">
                             <label for="nombre">Nombre del servicio</label>
                             <input
                                 v-model="service.service"
@@ -40,46 +40,49 @@
                                 placeholder="Nombre del servicio"
                             >
                         </div>
-
-                        <div class="my-4">
-                            <label for="Descripción">Descripción</label>
-                            <input
-                                v-model="service.description"
-                                type="text"
-                                class="form-control"
-                                id="description"
-                                placeholder="Descripción del servicio"
-                            >
+                        <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Descripción</label>
+                        <textarea class="form-control" id="description" rows="3" v-model="service.description" placeholder="Descripción del servicio"></textarea>
                         </div>
 
-                        <div class="my-4">
-                            <label for="Aforo">Aforo</label>
+                        <div class="my-2">
+                            <label for="Hora">Hora</label>
                             <input
-                                v-model="service.capacity"
-                                type="number"
-                                class="form-control"
-                                id="capacity"
-                                placeholder="Aforo del servicio"
-                            >
-                        </div>
-                        <div class="my-4">
-                            <label for="hora">Hora</label>
-                            <input
-                                v-model="service.time"
+                                v-model="service.time1"
                                 type="time"
                                 class="form-control"
-                                id="time"
-                                placeholder="Hora de inicio-Hora de fin"
+                                id="time1"
+                                placeholder="Hora de inicio"
                             >
                         </div>
-                        <div class="my-4">
-                            <label for="fecha">Fecha</label>
+                        <div class="my-2">
+                            <label for="hora">Hora</label>
                             <input
-                                v-model="service.date"
+                                v-model="service.time2"
+                                type="time"
+                                class="form-control"
+                                id="time2"
+                                placeholder="Hora final"
+                            >
+                        </div>
+                        <div class="my-2">
+                            <label for="fecha">Fecha de Inicio</label>
+                            <input
+                                v-model="service.date1"
                                 type="date"
                                 class="form-control"
-                                id="date"
-                                placeholder="Fecha de inicio-Fecha de fin"
+                                id="date1"
+                                placeholder="Fecha de inicio"
+                            >
+                        </div>
+                        <div class="my-2">
+                            <label for="fecha">Fecha Final</label>
+                            <input
+                                v-model="service.date2"
+                                type="date"
+                                class="form-control"
+                                id="date2"
+                                placeholder="Fecha final"
                             >
                         </div>
                     </div>
@@ -113,9 +116,10 @@
                     <th scope="col">#</th>
                     <th scope="col">Servicio</th>
                     <th scope="col">Descripción</th>
-                    <th scope="col">Aforo</th>
-                    <th scope="col">Hora</th>
-                    <th scope="col">Fecha</th>
+                    <th scope="col">Hora de Inicio</th>
+                    <th scope="col">Hora Final</th>
+                    <th scope="col">Fecha de Inicio</th>
+                    <th scope="col">Fecha de Final</th>
                     <th scope="col" colspan="2" style="padding-left: 60px;">Acción</th>
                 </tr>
             </thead>
@@ -124,9 +128,10 @@
                     <th scope="row">{{ ser.id }}</th>
                     <td>{{ ser.service }}</td>
                     <td>{{ ser.description }}</td>
-                    <td>{{ ser.capacity }}</td>
-                    <td>{{ ser.time }}</td>
-                    <td>{{ ser.date }}</td>
+                    <td>{{ ser.time1}}</td>
+                    <td>{{ ser.time2 }}</td>
+                    <td>{{ ser.date1 }}</td>
+                    <td>{{ ser.date2 }}</td>
                     <td>
                         <button
                             @click="
@@ -192,16 +197,19 @@ export default {
                 (this.id = data.id), (this.tituloModal = "Modificar Servicio");
                 this.service.service = data.service;
                 this.service.description = data.description;
-                this.service.capacity = data.capacity;
-                this.service.time = data.time;
-                this.service.date = data.date;
+                this.service.time1 = data.time1;
+                this.service.time2 = data.time2;
+                this.service.date1 = data.date1;
+                this.service.date2 = data.date2;
             } else {
                 (this.id = 0), (this.tituloModal = "Crear Servicio");
                 this.service.service = "";
                 this.service.description = "";
                 this.service.capacity = "";
-                this.service.time = "";
-                this.service.date = "";
+                this.service.time1 = "";
+                this.service.time1 = "";
+                this.service.date2 = "";
+                this.service.date2 = "";
             }
         },
         cerrarModal() {
