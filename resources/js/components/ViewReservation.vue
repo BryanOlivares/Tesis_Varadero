@@ -1,6 +1,5 @@
 <template>
-
-    <div>
+    <div >
       <img src="img/1.jpg" width="50" height="50" style="margin-left: 290px;margin-bottom: 30px; border-radius: 40%;">
       <img src="img/2.jpg" width="50" height="50" style="margin-left: 30px;margin-bottom: 30px; border-radius: 40%;">
       <img src="img/3.jpg" width="50" height="50" style="margin-left: 30px;margin-bottom: 30px; border-radius: 40%;">
@@ -16,6 +15,7 @@
                     <th scope="col">Aforo Max</th>
                     <th scope="col">Hora</th>
                     <th scope="col">Fecha</th>
+                    <th scope="col">Accion</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,6 +26,12 @@
                     <td>{{crear.capacity}}</td> 
                     <td>{{crear.time}}</td> 
                     <td>{{crear.date}}</td> 
+                    <button
+                            @click="dirigir()"
+                            type="button"
+                            class="btn btn-danger">
+                            Reservalo ya!!
+                        </button>
                 </tr>
             </tbody>
         </table>
@@ -45,6 +51,10 @@ export default {
       const res=await axios.get('services');
       this.services=res.data;
     },
+
+    dirigir(){
+                this.$router.push('/createreservations')
+            }
    
   },
 
@@ -52,6 +62,7 @@ export default {
     this.listar();
     
   },
+   
 };
 </script>
 

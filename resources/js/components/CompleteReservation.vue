@@ -1,13 +1,22 @@
 <template>
+
 <div>
-    <img src="img/logo 3.png" width="200" height="150" style="margin-left: 430px;margin-bottom: 30px;">
+    <img src="img/logo 2.png" width="200" height="150" style="margin-left: 430px;margin-bottom: 30px;width: 200px;">
     <form>
           
      
         <h5 class="text-center" style="padding-right: 175px;  font-weight: bold;">Servicio:</h5>
-        <input type="text"  v-model="fields.service" class="form-control" style="
+            <select class="custom-select" v-model="fields.service" style="
             width: 226px;
             margin-left: 420px;">
+            <option selected>Selecciona un servicio</option>
+            <option value="Piscinas">Piscinas</option>
+            <option value="Canchas de Futbol">Canchas de Futbol</option>
+            <option value="Baños de Cajon">Baños de Cajon</option>
+            <option value="Gymnasio">Gymnasio</option>
+            <option value="Karate">Karate</option>
+            <option value="Canchas de Basquet">Canchas de Basquet</option>
+            </select>
         <div class="alert alert-danger" v-if="errors && errors.service" style="
             width: 226px;
             margin-left: 420px;">

@@ -23,8 +23,11 @@
           <router-view></router-view>
       </div>
   </main>
-    
+
+  
 </div>
 @endsection
+
+
 
 

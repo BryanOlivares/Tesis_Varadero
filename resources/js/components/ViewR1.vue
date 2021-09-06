@@ -1,4 +1,4 @@
-<template>
+<template >
     <div>
         <table class="table table-striped">
             <thead class="thead-dark">

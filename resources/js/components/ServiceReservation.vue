@@ -1,6 +1,8 @@
 <template>
+
     <div>
-        <table class="table table-striped">
+        <table class="table table-striped" style="
+    font-weight: bold;">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
@@ -28,15 +30,22 @@
                             @click="eliminar(ver.id)"
                             class="btn btn-success"
                         ><i class="fas fa-save"></i>
-                        </button>
+                    </button>
+                    <button
+                            @click="eliminar2(ver.id)"
+                            class="btn btn-danger"
+                        ><i class="fas fa-trash"></i>
+                    </button>
                 </tr>
             </tbody>
         </table>
         
     </div>
+    
 </template>
 
 <script>
+
 export default {
         data(){
           return {
@@ -61,14 +70,29 @@ export default {
                         this.errors = error.response.data.errors;
                     }
                 });
-                }
-                
+                },
+
+                async eliminar2(id) {
+                        const res = await axios.delete("/createreservations/" + id)
+                        .then(response =>{
+                        this.$swal({icon:'success', title:'Reservación eliminado con exito'})
+                         this.$router.push('/reservations')
+                         this.listar();
+                }).catch(error => {
+                    if(error.response.status === 422){
+                        this.$swal({icon:'error', title:'Ocurrio un error'})
+                        this.errors = error.response.data.errors;
+                    }
+                });
+                }       
         },
 
         created() {
                 this.listar();
         },
 };
+
 </script>
+
 
 <style></style>
