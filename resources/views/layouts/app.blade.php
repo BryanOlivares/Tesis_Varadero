@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+
+      
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -18,11 +20,16 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+
+        html{
+            background-image: url(img/login.jpg);
+            
+        }
+    </style>
 </head>
 <body>
-    <div id="app" style="
-    background: rgb(136 122 253 / 51%);
-">
+    <div id="app">
         <nav class="navbar navbar-dark bg-dark">
             <div class="container">
                 

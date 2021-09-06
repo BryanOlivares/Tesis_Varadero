@@ -124,7 +124,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="ser in services" :key="ser.id">
+                <tr v-for="ser in services" :key="ser.id" style=" font-weight: bolder;">
                     <th scope="row">{{ ser.id }}</th>
                     <td>{{ ser.service }}</td>
                     <td>{{ ser.description }}</td>

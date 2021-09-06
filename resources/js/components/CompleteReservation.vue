@@ -1,10 +1,6 @@
 <template>
-
-<div>
-    <img src="img/logo 2.png" width="200" height="150" style="margin-left: 430px;margin-bottom: 30px;width: 200px;">
-    <form>
-          
-     
+<div class="contenedor">
+        <form>
         <h5 class="text-center" style="padding-right: 175px;  font-weight: bold;">Servicio:</h5>
             <select class="custom-select" v-model="fields.service" style="
             width: 226px;
@@ -131,3 +127,10 @@ export default{
 
 }
 </script>
+<style >
+.contenedor{
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+</style>
