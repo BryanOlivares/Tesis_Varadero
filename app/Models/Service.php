@@ -17,7 +17,14 @@ class Service extends Model
         'date2',
     ];
 
+    //public function create_reservations()
+    //{
+      //  return $this->hasMany('App\CreateReservation');
+    //}
+
+}
+
     
    
-}
+
 

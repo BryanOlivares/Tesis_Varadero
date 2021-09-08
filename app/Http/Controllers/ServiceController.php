@@ -28,6 +28,7 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+
         $service=new Service;
         $service->create($request->all());
     }

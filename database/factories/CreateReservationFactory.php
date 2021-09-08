@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\CreateReservation;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CreateReservationFactory extends Factory
@@ -30,4 +31,15 @@ class CreateReservationFactory extends Factory
             'capacity' => $this->faker->numberBetween(1,70),
         ];
     }
+        //public function user()
+        //{
+          //  return $this->belongsTo('App\User');
+        //}
+        
+        //public function service()
+        //{
+          //  return $this->belongsTo('App\Service');
+        //}
+
+
 }

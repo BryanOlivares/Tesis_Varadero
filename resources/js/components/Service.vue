@@ -14,7 +14,7 @@
         <!-- The Modal -->
         <div class="modal" :class="{ mostrar: modal }">
             <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-content" style="bottom: 25px;">
                     <!-- Modal Header -->
                     <div class="modal-header">
                         <h4 class="modal-title">{{ tituloModal }}</h4>
@@ -29,23 +29,21 @@
                     </div>
 
                     <!-- Modal body -->
-                    <div class="modal-body">
-                        <div class="my-2">
+                    <div class="modal-body" style="top: -20px;">
+                        <div class="my-1">
                             <label for="nombre">Nombre del servicio</label>
                             <input
                                 v-model="service.service"
                                 type="text"
                                 class="form-control"
                                 id="service"
-                                placeholder="Nombre del servicio"
-                            >
+                                placeholder="Nombre del servicio">
                         </div>
                         <div class="form-group">
                         <label for="exampleFormControlTextarea1">Descripción</label>
-                        <textarea class="form-control" id="description" rows="3" v-model="service.description" placeholder="Descripción del servicio"></textarea>
+                        <textarea class="form-control" id="description" rows="2" v-model="service.description" placeholder="Descripción del servicio"></textarea>
                         </div>
-
-                        <div class="my-2">
+                        <div class="my-1">
                             <label for="Hora">Hora</label>
                             <input
                                 v-model="service.time1"
@@ -55,7 +53,7 @@
                                 placeholder="Hora de inicio"
                             >
                         </div>
-                        <div class="my-2">
+                        <div class="my-1">
                             <label for="hora">Hora</label>
                             <input
                                 v-model="service.time2"
@@ -65,7 +63,7 @@
                                 placeholder="Hora final"
                             >
                         </div>
-                        <div class="my-2">
+                        <div class="my-1">
                             <label for="fecha">Fecha de Inicio</label>
                             <input
                                 v-model="service.date1"
@@ -75,7 +73,7 @@
                                 placeholder="Fecha de inicio"
                             >
                         </div>
-                        <div class="my-2">
+                        <div class="my-1">
                             <label for="fecha">Fecha Final</label>
                             <input
                                 v-model="service.date2"
@@ -172,12 +170,10 @@ export default {
             const res = await axios.get("/services");
             this.services = res.data;
         },
-
         async eliminar(id) {
             const res = await axios.delete("/services/" + id);
             this.listar();
         },
-
         async guardar() {
             if (this.modificar) {
                 const res = await axios.put(
@@ -190,7 +186,6 @@ export default {
             this.cerrarModal();
             this.listar();
         },
-
         abrirModal(data = {}) {
             this.modal = 1;
             if (this.modificar) {
@@ -216,7 +211,6 @@ export default {
             this.modal = 0;
         }
     },
-
     created() {
         this.listar();
     }

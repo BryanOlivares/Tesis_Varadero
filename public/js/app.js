@@ -1988,10 +1988,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2019,11 +2015,6 @@ __webpack_require__.r(__webpack_exports__);
         _this.$router.push('/home');
       })["catch"](function (error) {
         if (error.response.status === 422) {
-          _this.$swal({
-            icon: 'error',
-            title: 'Ocurrio un error'
-          });
-
           _this.errors = error.response.data.errors;
         }
       });
@@ -2055,8 +2046,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
 //
 //
 //
@@ -43146,7 +43135,7 @@ var render = function() {
             }
           ],
           staticClass: "custom-select",
-          staticStyle: { width: "226px", "margin-left": "420px" },
+          staticStyle: { width: "237px", "margin-left": "420px" },
           on: {
             change: function($event) {
               var $$selectedVal = Array.prototype.filter
@@ -43195,7 +43184,7 @@ var render = function() {
             "div",
             {
               staticClass: "alert alert-danger",
-              staticStyle: { width: "226px", "margin-left": "420px" }
+              staticStyle: { width: "237px", "margin-left": "420px" }
             },
             [
               _vm._v(
@@ -43228,7 +43217,7 @@ var render = function() {
           }
         ],
         staticClass: "form-control",
-        staticStyle: { width: "226px", "margin-left": "420px" },
+        staticStyle: { width: "237px", "margin-left": "420px" },
         attrs: { type: "text" },
         domProps: { value: _vm.fields.name },
         on: {
@@ -43246,7 +43235,7 @@ var render = function() {
             "div",
             {
               staticClass: "alert alert-danger",
-              staticStyle: { width: "226px", "margin-left": "420px" }
+              staticStyle: { width: "237px", "margin-left": "420px" }
             },
             [
               _vm._v(
@@ -43255,8 +43244,6 @@ var render = function() {
             ]
           )
         : _vm._e(),
-      _vm._v(" "),
-      _c("br"),
       _vm._v(" "),
       _c(
         "h5",
@@ -43277,7 +43264,7 @@ var render = function() {
           }
         ],
         staticClass: "form-control",
-        staticStyle: { width: "226px", "margin-left": "420px" },
+        staticStyle: { width: "252px", "margin-left": "420px" },
         attrs: { type: "text" },
         domProps: { value: _vm.fields.lastname },
         on: {
@@ -43295,7 +43282,7 @@ var render = function() {
             "div",
             {
               staticClass: "alert alert-danger",
-              staticStyle: { width: "226px", "margin-left": "420px" }
+              staticStyle: { width: "252px", "margin-left": "420px" }
             },
             [
               _vm._v(
@@ -43306,8 +43293,6 @@ var render = function() {
             ]
           )
         : _vm._e(),
-      _vm._v(" "),
-      _c("br"),
       _vm._v(" "),
       _c(
         "h5",
@@ -43328,7 +43313,7 @@ var render = function() {
           }
         ],
         staticClass: "form-control",
-        staticStyle: { width: "226px", "margin-left": "420px" },
+        staticStyle: { width: "230px", "margin-left": "420px" },
         attrs: { type: "date" },
         domProps: { value: _vm.fields.date },
         on: {
@@ -43346,7 +43331,7 @@ var render = function() {
             "div",
             {
               staticClass: "alert alert-danger",
-              staticStyle: { width: "226px", "margin-left": "420px" }
+              staticStyle: { width: "230px", "margin-left": "420px" }
             },
             [
               _vm._v(
@@ -43355,8 +43340,6 @@ var render = function() {
             ]
           )
         : _vm._e(),
-      _vm._v(" "),
-      _c("br"),
       _vm._v(" "),
       _c(
         "h5",
@@ -43377,7 +43360,7 @@ var render = function() {
           }
         ],
         staticClass: "form-control",
-        staticStyle: { width: "226px", "margin-left": "420px" },
+        staticStyle: { width: "230px", "margin-left": "420px" },
         attrs: { type: "time" },
         domProps: { value: _vm.fields.time },
         on: {
@@ -43395,7 +43378,7 @@ var render = function() {
             "div",
             {
               staticClass: "alert alert-danger",
-              staticStyle: { width: "226px", "margin-left": "420px" }
+              staticStyle: { width: "230px", "margin-left": "420px" }
             },
             [
               _vm._v(
@@ -43404,8 +43387,6 @@ var render = function() {
             ]
           )
         : _vm._e(),
-      _vm._v(" "),
-      _c("br"),
       _vm._v(" "),
       _c(
         "h5",
@@ -43426,7 +43407,7 @@ var render = function() {
           }
         ],
         staticClass: "form-control",
-        staticStyle: { width: "226px", "margin-left": "420px" },
+        staticStyle: { width: "245px", "margin-left": "420px" },
         attrs: { type: "number" },
         domProps: { value: _vm.fields.capacity },
         on: {
@@ -43444,7 +43425,7 @@ var render = function() {
             "div",
             {
               staticClass: "alert alert-danger",
-              staticStyle: { width: "226px", "margin-left": "420px" }
+              staticStyle: { width: "245px", "margin-left": "420px" }
             },
             [
               _vm._v(
@@ -43541,249 +43522,269 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "modal", class: { mostrar: _vm.modal } }, [
       _c("div", { staticClass: "modal-dialog" }, [
-        _c("div", { staticClass: "modal-content" }, [
-          _c("div", { staticClass: "modal-header" }, [
-            _c("h4", { staticClass: "modal-title" }, [
-              _vm._v(_vm._s(_vm.tituloModal))
+        _c(
+          "div",
+          { staticClass: "modal-content", staticStyle: { bottom: "25px" } },
+          [
+            _c("div", { staticClass: "modal-header" }, [
+              _c("h4", { staticClass: "modal-title" }, [
+                _vm._v(_vm._s(_vm.tituloModal))
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "close",
+                  attrs: { type: "button", "data-dismiss": "modal" },
+                  on: {
+                    click: function($event) {
+                      return _vm.cerrarModal()
+                    }
+                  }
+                },
+                [_vm._v("\n                        ×\n                    ")]
+              )
             ]),
             _vm._v(" "),
             _c(
-              "button",
-              {
-                staticClass: "close",
-                attrs: { type: "button", "data-dismiss": "modal" },
-                on: {
-                  click: function($event) {
-                    return _vm.cerrarModal()
-                  }
-                }
-              },
-              [_vm._v("\n                        ×\n                    ")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "modal-body" }, [
-            _c("div", { staticClass: "my-2" }, [
-              _c("label", { attrs: { for: "nombre" } }, [
-                _vm._v("Nombre del servicio")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.service.service,
-                    expression: "service.service"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  id: "service",
-                  placeholder: "Nombre del servicio"
-                },
-                domProps: { value: _vm.service.service },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.service, "service", $event.target.value)
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "exampleFormControlTextarea1" } }, [
-                _vm._v("Descripción")
-              ]),
-              _vm._v(" "),
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.service.description,
-                    expression: "service.description"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  id: "description",
-                  rows: "3",
-                  placeholder: "Descripción del servicio"
-                },
-                domProps: { value: _vm.service.description },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.service, "description", $event.target.value)
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "my-2" }, [
-              _c("label", { attrs: { for: "Hora" } }, [_vm._v("Hora")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.service.time1,
-                    expression: "service.time1"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  type: "time",
-                  id: "time1",
-                  placeholder: "Hora de inicio"
-                },
-                domProps: { value: _vm.service.time1 },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.service, "time1", $event.target.value)
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "my-2" }, [
-              _c("label", { attrs: { for: "hora" } }, [_vm._v("Hora")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.service.time2,
-                    expression: "service.time2"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "time", id: "time2", placeholder: "Hora final" },
-                domProps: { value: _vm.service.time2 },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.service, "time2", $event.target.value)
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "my-2" }, [
-              _c("label", { attrs: { for: "fecha" } }, [
-                _vm._v("Fecha de Inicio")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.service.date1,
-                    expression: "service.date1"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  type: "date",
-                  id: "date1",
-                  placeholder: "Fecha de inicio"
-                },
-                domProps: { value: _vm.service.date1 },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.service, "date1", $event.target.value)
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "my-2" }, [
-              _c("label", { attrs: { for: "fecha" } }, [_vm._v("Fecha Final")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.service.date2,
-                    expression: "service.date2"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  type: "date",
-                  id: "date2",
-                  placeholder: "Fecha final"
-                },
-                domProps: { value: _vm.service.date2 },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.service, "date2", $event.target.value)
-                  }
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "modal-footer" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-secondary",
-                attrs: { type: "button", "data-dismiss": "modal" },
-                on: {
-                  click: function($event) {
-                    return _vm.cerrarModal()
-                  }
-                }
-              },
+              "div",
+              { staticClass: "modal-body", staticStyle: { top: "-20px" } },
               [
-                _vm._v(
-                  "\n                        Cancelar\n                    "
-                )
+                _c("div", { staticClass: "my-1" }, [
+                  _c("label", { attrs: { for: "nombre" } }, [
+                    _vm._v("Nombre del servicio")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.service.service,
+                        expression: "service.service"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "service",
+                      placeholder: "Nombre del servicio"
+                    },
+                    domProps: { value: _vm.service.service },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.service, "service", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { attrs: { for: "exampleFormControlTextarea1" } },
+                    [_vm._v("Descripción")]
+                  ),
+                  _vm._v(" "),
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.service.description,
+                        expression: "service.description"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      id: "description",
+                      rows: "2",
+                      placeholder: "Descripción del servicio"
+                    },
+                    domProps: { value: _vm.service.description },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.service,
+                          "description",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "my-1" }, [
+                  _c("label", { attrs: { for: "Hora" } }, [_vm._v("Hora")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.service.time1,
+                        expression: "service.time1"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "time",
+                      id: "time1",
+                      placeholder: "Hora de inicio"
+                    },
+                    domProps: { value: _vm.service.time1 },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.service, "time1", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "my-1" }, [
+                  _c("label", { attrs: { for: "hora" } }, [_vm._v("Hora")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.service.time2,
+                        expression: "service.time2"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "time",
+                      id: "time2",
+                      placeholder: "Hora final"
+                    },
+                    domProps: { value: _vm.service.time2 },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.service, "time2", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "my-1" }, [
+                  _c("label", { attrs: { for: "fecha" } }, [
+                    _vm._v("Fecha de Inicio")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.service.date1,
+                        expression: "service.date1"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "date",
+                      id: "date1",
+                      placeholder: "Fecha de inicio"
+                    },
+                    domProps: { value: _vm.service.date1 },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.service, "date1", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "my-1" }, [
+                  _c("label", { attrs: { for: "fecha" } }, [
+                    _vm._v("Fecha Final")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.service.date2,
+                        expression: "service.date2"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "date",
+                      id: "date2",
+                      placeholder: "Fecha final"
+                    },
+                    domProps: { value: _vm.service.date2 },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.service, "date2", $event.target.value)
+                      }
+                    }
+                  })
+                ])
               ]
             ),
             _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-success",
-                attrs: { type: "button", "data-dismiss": "modal" },
-                on: {
-                  click: function($event) {
-                    return _vm.guardar()
+            _c("div", { staticClass: "modal-footer" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-secondary",
+                  attrs: { type: "button", "data-dismiss": "modal" },
+                  on: {
+                    click: function($event) {
+                      return _vm.cerrarModal()
+                    }
                   }
-                }
-              },
-              [
-                _vm._v(
-                  "\n                        Guardar\n                    "
-                )
-              ]
-            )
-          ])
-        ])
+                },
+                [
+                  _vm._v(
+                    "\n                        Cancelar\n                    "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-success",
+                  attrs: { type: "button", "data-dismiss": "modal" },
+                  on: {
+                    click: function($event) {
+                      return _vm.guardar()
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                        Guardar\n                    "
+                  )
+                ]
+              )
+            ])
+          ]
+        )
       ])
     ]),
     _vm._v(" "),
