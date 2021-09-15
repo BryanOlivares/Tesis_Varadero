@@ -14,7 +14,7 @@
         <style>
 
             html{
-                background-image: url(img/login.jpg);
+                background-image: url(img/var.jpg);
                 
             }
             
@@ -53,7 +53,7 @@
                 font-size: 84px;
             }
             .links > a {
-                color: #e8f1f1;
+                color: #392972;
                 padding: 0 25px;
                 font-size: 13px;
                 font-weight: 600;

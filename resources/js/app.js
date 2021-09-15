@@ -17,6 +17,8 @@ import Crear from './components/CompleteReservation.vue'
 import Service from './components/Service.vue'
 import ServiceReservation from './components/ServiceReservation.vue'
 import View from './components/ViewReservation.vue'
+import Profile from './components/User.vue'
+
 
 
 
@@ -47,6 +49,10 @@ const router = new VueRouter({
         { path: '/home',
           name: 'home',
           component: View,
+        },
+        { path: '/users',
+          name: 'users',
+          component: Profile,
         },
     ]
 })

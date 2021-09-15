@@ -65,9 +65,8 @@ body {
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
-  color: #8e1307;
+  color: #212529;
   text-align: left;
- 
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -1967,11 +1966,11 @@ pre code {
   width: 100%;
   height: calc(1.6em + 0.75rem + 2px);
   padding: 0.375rem 0.75rem;
-  font-size: 1.1rem;
-  font-weight: bold;
+  font-size: 0.9rem;
+  font-weight: 400;
   line-height: 1.6;
-  color: #29006b;
-  background-color: #e0e0e0da;
+  color: #495057;
+  background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
@@ -3609,12 +3608,12 @@ input[type=button].btn-block {
   width: 100%;
   height: calc(1.6em + 0.75rem + 2px);
   padding: 0.375rem 1.75rem 0.375rem 0.75rem;
-  font-size: 1.1rem;
-  font-weight: bold;
+  font-size: 0.9rem;
+  font-weight: 400;
   line-height: 1.6;
-  color: #29006b;
+  color: #495057;
   vertical-align: middle;
-  background: #e0e0e0da url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.75rem center/8px 10px no-repeat;
+  background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.75rem center/8px 10px no-repeat;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   -webkit-appearance: none;

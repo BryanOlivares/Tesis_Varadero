@@ -31,3 +31,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::apiResource('/services', ServiceController::class)->names('services')->middleware('verified');
 Route::apiResource('/reservations', ReservationController::class)->names('reservations')->middleware('verified');
 Route::apiResource('/createreservations', CreateReservationController::class)->names('createreservations')->middleware('verified');
+Route::apiResource('/users', UserController::class)->names('users')->middleware('verified');

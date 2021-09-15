@@ -27,8 +27,7 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-       $createreservation=new CreateReservation;
-       $createreservation->create($request->all());
+       
     }
 
     /**
@@ -39,7 +38,7 @@ class ReservationController extends Controller
      */
     public function show(Reservation $reservation)
     {
-            return $createreservation;  
+            //return $createreservation;  
     }
 
     /**

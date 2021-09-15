@@ -8,6 +8,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="user" content="{{ Auth::user()}}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -23,14 +24,14 @@
     <style>
 
         html{
-            background-image: url(img/login.jpg);
+            background-image: url(img/var.jpg);
             
         }
     </style>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
                 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" style="
@@ -67,9 +68,7 @@
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="
-                                margin-left: 950px;
-                            ">
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="margin-left: 950px;">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -79,6 +78,7 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+                                    
                                 </div>
                             </li>
                         @endguest
