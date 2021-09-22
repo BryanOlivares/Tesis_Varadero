@@ -83,6 +83,16 @@
                                 placeholder="Fecha final"
                             >
                         </div>
+                        <!-- <div class="my-1">
+                            <label for="fecha">Uusario</label>
+                            <input
+                                v-model="service.user_id"
+                                type="number"
+                                class="form-control"
+                                id="user_id"
+                                placeholder="Uusariol"
+                            >
+                        </div> -->
                     </div>
 
                     <!-- Modal footer -->
@@ -118,6 +128,7 @@
                     <th scope="col">Hora Final</th>
                     <th scope="col">Fecha de Inicio</th>
                     <th scope="col">Fecha de Final</th>
+                    <!-- <th scope="col">Uusuario</th> -->
                     <th scope="col" colspan="2" style="padding-left: 60px;">Acción</th>
                 </tr>
             </thead>
@@ -130,6 +141,7 @@
                     <td>{{ ser.time2 }}</td>
                     <td>{{ ser.date1 }}</td>
                     <td>{{ ser.date2 }}</td>
+                    <!-- <td>{{ ser.user_id }}</td> -->
                     <td>
                         <button
                             @click="
@@ -155,8 +167,11 @@ export default {
                 service: "",
                 description: "",
                 capacity: "",
-                time: "",
-                date: ""
+                time1: "",
+                time2: "",
+                date1: "",
+                date2: "",
+                // user_id: "",
             },
             id: 0,
             modificar: true,
@@ -196,15 +211,17 @@ export default {
                 this.service.time2 = data.time2;
                 this.service.date1 = data.date1;
                 this.service.date2 = data.date2;
+                // this.service.user_id = data.user_id;
             } else {
                 (this.id = 0), (this.tituloModal = "Crear Servicio");
                 this.service.service = "";
                 this.service.description = "";
                 this.service.capacity = "";
                 this.service.time1 = "";
-                this.service.time1 = "";
+                this.service.time2 = "";
+                this.service.date1 = "";
                 this.service.date2 = "";
-                this.service.date2 = "";
+                // this.service.user_id = "";
             }
         },
         cerrarModal() {

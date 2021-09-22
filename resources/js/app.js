@@ -16,8 +16,11 @@ import App from './components/App.vue'
 import Crear from './components/CompleteReservation.vue'
 import Service from './components/Service.vue'
 import ServiceReservation from './components/ServiceReservation.vue'
-import View from './components/ViewReservation.vue'
+import View from './components/Viewservice.vue'
 import Profile from './components/User.vue'
+import Historial from './components/History.vue'
+import Aceptreservation from './components/Acetreservation.vue'
+// import files from './components/Files.vue'
 
 
 
@@ -37,8 +40,8 @@ const router = new VueRouter({
           component: Service,
         },
 
-        { path: '/reservations',
-          name: 'reservations',
+        { path: '/view_reservations',
+          name: 'view_reservations',
           component: ServiceReservation,
         },
         { path: '/createreservations',
@@ -54,6 +57,19 @@ const router = new VueRouter({
           name: 'users',
           component: Profile,
         },
+        { path: '/history',
+          name: 'history',
+          component: Historial,
+        },
+        { path: '/aceptreservations',
+          name: 'aceptreservations',
+          component: Aceptreservation,
+        },
+        
+        // { path: '/download_files',
+        //   name: 'download_files',
+        //   component: files,
+        // },
     ]
 })
 const app = new Vue({

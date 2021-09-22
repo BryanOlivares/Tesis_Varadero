@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\CreateReservation;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -15,7 +16,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return Auth::user();
+        // return Auth::user();
+        return view('user');
+        //return $createreservation;
     }
 
     /**
@@ -37,7 +40,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        
     }
 
     /**

@@ -45,15 +45,15 @@ class User extends Authenticatable //implements MustVerifyEmail
     ];
 
 
-
-    //public function create_reservations()
-    //{
-      //  return $this->hasMany('App\CreateReservation');
-    //}
+    public function createreservations()
+    {
+        return $this->hasMany('App\CreateReservation');
+    }
 
     // public function user()
     // {
     //     Auth::user();
     // }
+    
 
 }

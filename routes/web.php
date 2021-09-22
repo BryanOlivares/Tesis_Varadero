@@ -4,7 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\AceptReservationController;
+use App\Http\Controllers\ViewController;
 use App\Http\Controllers\CreateReservationController;
+use App\Http\Controllers\FileController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\UserController;
 
 
@@ -31,4 +35,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::apiResource('/services', ServiceController::class)->names('services')->middleware('verified');
 Route::apiResource('/reservations', ReservationController::class)->names('reservations')->middleware('verified');
 Route::apiResource('/createreservations', CreateReservationController::class)->names('createreservations')->middleware('verified');
+Route::apiResource('/history', HistoryController::class)->names('history')->middleware('verified');
+Route::apiResource('/aceptreservations',  AceptReservationController::class)->names('aceptreservations')->middleware('verified');
 Route::apiResource('/users', UserController::class)->names('users')->middleware('verified');
+Route::apiResource('/download_files', FileController::class)->names('download_files')->middleware('verified');
+Route::apiResource('/view_reservations', ViewController::class)->names('view_reservations')->middleware('verified');

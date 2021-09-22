@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Reservation;
-use App\Models\CreateReservation;
 use Illuminate\Http\Request;
-use App\Http\Requests\ReservationStoreRequest;
 
-class ReservationController extends Controller
+
+class ViewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,7 @@ class ReservationController extends Controller
      */
     public function index()
     {
-         return Reservation::get();;
-        //return view('verreservation');
+        return view('verreservation');
     }
 
     /**
@@ -26,43 +23,42 @@ class ReservationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ReservationStoreRequest $request)
+    public function store(Request $request)
     {
-        $reservation=new Reservation;
-        $reservation->create($request->validated());
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Reservation  $reservation
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Reservation $reservation)
+    public function show($id)
     {
-        
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Reservation  $reservation
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reservation $reservation)
+    public function update(Request $request, $id)
     {
-        $reservation->update($request->all());
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Reservation  $reservation
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reservation $reservation)
+    public function destroy($id)
     {
-        $reservation->delete();
+        //
     }
 }

@@ -28,8 +28,7 @@ class ServiceFactory extends Factory
             'time2' => $this->faker->time(),
             'date1' => $this->faker->date(),
             'date2' => $this->faker-date(),
-        
-            
+              
         ];
     }
 }

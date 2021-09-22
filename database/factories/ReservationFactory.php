@@ -24,10 +24,12 @@ class ReservationFactory extends Factory
         return [
             'service' => $this->faker->name(),
             'name' => $this->faker->name(),
-            'lastname' => $this->faker->name(),
+            'email' => $this->faker->name(),
             'date' => $this->faker->date(),
             'time' => $this->faker->time(),
             'capacity' => $this->faker->numberBetween(1,70),
+            'comment' => $this->faker->paragraph(),
+            'pay' => $this->faker->float(),
         ];
     }
 }

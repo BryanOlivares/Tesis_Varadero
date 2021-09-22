@@ -41,7 +41,7 @@ class LoginController extends Controller
     public function redirectPath()
     {
         if(auth()->user()->email =='admin@admin.com'){
-            return  '/reservations';
+            return  '/view_reservations';
         }
 
         return '/home';

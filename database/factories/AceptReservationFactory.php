@@ -2,18 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\CreateReservation;
-use App\Models\User;
+use App\Models\AceptReservation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CreateReservationFactory extends Factory
+class AceptReservationFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = CreateReservation::class;
+    protected $model = AceptReservation::class;
 
     /**
      * Define the model's default state.
@@ -29,19 +28,9 @@ class CreateReservationFactory extends Factory
             'date' => $this->faker->date(),
             'time' => $this->faker->time(),
             'capacity' => $this->faker->numberBetween(1,70),
+            'state' => $this->faker->name(),
             'comment' => $this->faker->paragraph(),
             'pay' => $this->faker->float(),
         ];
     }
-        public function user()
-        {
-           return $this->belongsTo('App\User');
-        }
-        
-        //public function service()
-        //{
-          //  return $this->belongsTo('App\Service');
-        //}
-
-
 }

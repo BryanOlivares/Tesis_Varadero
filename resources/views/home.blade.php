@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-   <nav class="navbar navbar-dark bg-dark">
+   <nav class="navbar navbar-dark bg-dark" style="right: 30px; bottom: 25px;">
       <div class="container">
           <div class="justify-content-center">
               <ul class="nav nav-tabs" style="
@@ -17,7 +17,10 @@
                   </li>   
                   <li class="nav-item">
                     <router-link to="/users" class="nav-link">Gestionar perfil</router-link>
-                </li>      
+                </li>  
+                <li class="nav-item">
+                    <router-link to="/history" class="nav-link">Historial</router-link>
+                </li>    
               </ul>
           </div>
       </div>
