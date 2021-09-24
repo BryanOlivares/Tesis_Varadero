@@ -5,9 +5,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\AceptReservationController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\CreateReservationController;
-use App\Http\Controllers\FileController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\UserController;
 
@@ -28,10 +28,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
 
 
+Route::apiResource('/reports', FileController::class)->names('reports')->middleware('verified');
 Route::apiResource('/services', ServiceController::class)->names('services')->middleware('verified');
 Route::apiResource('/reservations', ReservationController::class)->names('reservations')->middleware('verified');
 Route::apiResource('/createreservations', CreateReservationController::class)->names('createreservations')->middleware('verified');

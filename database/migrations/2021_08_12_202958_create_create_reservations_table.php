@@ -26,7 +26,7 @@ class CreateCreateReservationsTable extends Migration
             $table->integer('capacity');
             $table->string('state');
             $table->string('comment');
-            $table->float('pay');
+            $table->integer('pay');
             // $table->unsignedBigInteger('service_id')->nullable();
             // $table->foreign('service_id')->references('id')->on('services')->onDelete('restrict');
             $table->unsignedBigInteger('user_id');

@@ -23,7 +23,7 @@ class CreateAceptReservationsTable extends Migration
             $table->integer('capacity');
             $table->string('state');
             $table->string('comment');
-            $table->float('pay');
+            $table->integer('pay');
             $table->timestamps();
         });
     }

@@ -67,7 +67,7 @@
                         <div class="my-1">
                             <label for="nombre">Cant.Usuarios</label>
                             <input
-                                v-model="reservation.capacity"
+                                v-model="createreservation.capacity"
                                 disabled type="number"
                                 class="form-control"
                                 id="service"
@@ -75,7 +75,7 @@
                         </div>
                         <div class="my-1">
                            <h5 class="text-center" style="padding-right: 1115px;  font-weight: bold;">Estado:</h5>
-                            <select class="custom-select" v-model="reservation.state" style="width: 237px; margin-left: 0px;">
+                            <select class="custom-select" v-model="createreservation.state" style="width: 237px; margin-left: 0px;">
                             <option>Pendiente</option>
                             <option>Reserva Rechazada</option>
                             <option>Reserva Aceptada</option>
@@ -84,7 +84,7 @@
                         <div class="my-1">
                             <label for="nombre">Observaciones</label>
                             <input
-                                v-model="reservation.comment"
+                                v-model="createreservation.comment"
                                 type="text"
                                 class="form-control"
                                 id="comment"
@@ -93,7 +93,7 @@
                         <div class="my-1">
                             <label for="nombre">Valor a pagar</label>
                             <input
-                                v-model="reservation.pay"
+                                v-model="createreservation.pay"
                                 type="number"
                                 class="form-control"
                                 id="pay"
@@ -149,7 +149,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Servicio</th>
                     <th scope="col">Nombre</th>
-                    <th scope="col">email</th>
+                    <th scope="col" style="padding-left: 50px;">email</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Hora</th>
                     <th scope="col">Cant.Usuarios</th>
@@ -170,7 +170,7 @@
                     <td>{{ver.capacity}}</td>
                     <td>{{ver.state}}</td>
                     <td>{{ver.comment}}</td>
-                    <td>{{ver.pay}}</td>
+                    <td>${{ver.pay}}</td>
                      <button
                             @click="
                                 modificar = true;
@@ -206,12 +206,24 @@ export default {
                 comment: "",
                 pay: ""
             },
+            createreservation: {
+                service: "",
+                name: "",
+                email: "",
+                date: "",
+                time: "",
+                capacity: "",
+                state: "",
+                comment: "",
+                pay: ""
+            },
             
             id: 0,
             modificar: true,
             modal: 0,
             tituloModal: "",
             reservations: [],
+            createreservations: [],
         };
     },
     methods: {
@@ -224,7 +236,7 @@ export default {
             this.listar();
         },
         async guardar() {
-                const res = await axios.post("/aceptreservations", this.reservation)
+                const res = await axios.post("/aceptreservations", this.createreservation)
                 .then(response =>{
                         this.$swal({icon:'success', title:'Reservación Aceptada'})
                          this.$router.push("/aceptreservations")
@@ -238,23 +250,22 @@ export default {
             this.listar();
         },
         async guardar1(){
-            const res=await axios.put('/reservations/'+ this.id, this.reservation)
-            this.listar();
+            const res=await axios.put('/createreservations/'+ this.id, this.createreservation)
         },
 
         abrirModal(data = {}) {
             this.modal = 1;
             if (this.modificar) {
                 (this.id = data.id), (this.tituloModal = "Modificar Estado");
-                this.reservation.service = data.service;
-                this.reservation.name = data.name;
-                this.reservation.email = data.email;
-                this.reservation.date = data.date;
-                this.reservation.time = data.time;
-                this.reservation.capacity = data.capacity;
-                this.reservation.state = data.state;
-                this.reservation.comment = data.comment;
-                this.reservation.pay = data.pay;
+                this.createreservation.service = data.service;
+                this.createreservation.name = data.name;
+                this.createreservation.email = data.email;
+                this.createreservation.date = data.date;
+                this.createreservation.time = data.time;
+                this.createreservation.capacity = data.capacity;
+                this.createreservation.state = data.state;
+                this.createreservation.comment = data.comment;
+                this.createreservation.pay = data.pay;
             } else {
                 (this.id = 0), (this.tituloModal = "Crear Servicio");
                 this.reservation.state = "";

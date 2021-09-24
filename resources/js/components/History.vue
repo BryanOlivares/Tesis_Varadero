@@ -16,7 +16,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="ser in reservations" :key="ser.id" style=" font-weight: bolder;">
+                <tr v-for="ser in createreservations" :key="ser.id" style=" font-weight: bolder;">
                     <th scope="row">{{ser.id}}</th>
                     <!-- <td>{{user.service}}</td> -->
                     <td>{{ser.service}}</td>
@@ -27,7 +27,7 @@
                     <td>{{ser.capacity}}</td>
                     <td>{{ser.state}}</td>
                     <td>{{ser.comment}}</td>
-                    <td>{{ser.pay}}</td>
+                    <td>${{ser.pay}}</td>
                 </tr>
             </tbody>
         </table>
@@ -39,7 +39,7 @@ let user = document.head.querySelector('meta[name="user"]');
 export default {
     data() {
         return {
-            reservations:{},
+            createreservations:{},
     
            
     };
@@ -60,8 +60,8 @@ export default {
 
     methods: {
         async listar() {
-            const res = await axios.get("/reservations");
-            this.reservations = res.data;
+            const res = await axios.get("/createreservations");
+            this.createreservations = res.data;
         },
     },
     created() {

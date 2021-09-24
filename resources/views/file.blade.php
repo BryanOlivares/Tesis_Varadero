@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getlocale{})}}">
+<html >
     
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>File</title>
-        
-        
+        <title>El varadero</title>
+       
     </head>
     <body>
-        <h1>Exportar datos</h1>
+        <h1>Exportar PDF</h1>
         <p>
-            Clic <a href="">
-                Aqui
-            </a>  
-            Para descargar en PDF a los usuarios  
-        </p>
-        
+            Clic <a href="{{route('reports')}}">
+            Aqui
+        </a>
+        Para descargar a las reservas
+        </p> 
     </body>
 </html>
-
-

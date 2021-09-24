@@ -13,6 +13,7 @@ class AceptReservationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         return AceptReservation::get();

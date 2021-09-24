@@ -38,9 +38,6 @@ class CreateReservationController extends Controller
     {
         $createreservation=new CreateReservation;
         $createreservation->create($request->validated());
-
-        
-
     }
 
     /**

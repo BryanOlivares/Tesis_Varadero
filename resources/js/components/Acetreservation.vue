@@ -1,5 +1,10 @@
 <template>
     <div >
+      <div class="pdf">
+       <button @click="createPDF" type="button" class="btn btn-dark"><i class="fas fa-plus-circle"></i>
+            Descargar Reporte
+        </button>
+      </div>
         <table class="table table-success table-striped">
             <thead class="thead-dark">
                 <tr>
@@ -27,7 +32,7 @@
                     <td>{{crear.capacity}}</td>
                     <td>{{crear.state}}</td> 
                     <td>{{crear.comment}}</td> 
-                    <td>{{crear.pay}}</td> 
+                    <td>${{crear.pay}}</td> 
                 </tr>
             </tbody>
         </table>
@@ -35,7 +40,10 @@
 </template>
 
 <script>
+
+// import jsPDF from 'jspdf'
 export default {
+  // name:'pdf',
   data(){
     return{
       aceptreservations:[],
@@ -47,6 +55,19 @@ export default {
       const res=await axios.get('aceptreservations');
       this.aceptreservations=res.data;
     },
+    async createPDF() {
+
+      this.$router.push("/reports");
+      this.listar();
+    },
+    
+
+  //   createPDF () {
+  //   let pdfName = 'test'; 
+  //   var doc = new jsPDF();
+  //   doc.text("Hello World", 10, 10);
+  //   doc.save(pdfName + '.pdf');
+  // }
    
   },
 

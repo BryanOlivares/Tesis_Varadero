@@ -17,9 +17,6 @@
                     <li class="nav-item">
                         <router-link to="/aceptreservations" aria-current="page" href="#" class="nav-link">Reservaciones Aceptadas</router-link>
                     </li>
-                    <!-- <li class="nav-item">
-                        <router-link to="/download_files" aria-current="page" href="#" class="nav-link">Files</router-link>
-                    </li> -->
                 </ul>
             </div>
         </div>

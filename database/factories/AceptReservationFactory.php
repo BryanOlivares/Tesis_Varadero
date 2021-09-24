@@ -30,7 +30,7 @@ class AceptReservationFactory extends Factory
             'capacity' => $this->faker->numberBetween(1,70),
             'state' => $this->faker->name(),
             'comment' => $this->faker->paragraph(),
-            'pay' => $this->faker->float(),
+            'pay' => $this->faker->numberBetween(1,70),
         ];
     }
 }

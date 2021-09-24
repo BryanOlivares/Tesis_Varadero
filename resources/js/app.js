@@ -7,6 +7,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
+
 import VueSweetalert2 from "vue-sweetalert2"
 Vue.use(VueSweetalert2)
 import "sweetalert2/dist/sweetalert2.min.css"
@@ -20,7 +21,6 @@ import View from './components/Viewservice.vue'
 import Profile from './components/User.vue'
 import Historial from './components/History.vue'
 import Aceptreservation from './components/Acetreservation.vue'
-// import files from './components/Files.vue'
 
 
 
@@ -65,11 +65,6 @@ const router = new VueRouter({
           name: 'aceptreservations',
           component: Aceptreservation,
         },
-        
-        // { path: '/download_files',
-        //   name: 'download_files',
-        //   component: files,
-        // },
     ]
 })
 const app = new Vue({

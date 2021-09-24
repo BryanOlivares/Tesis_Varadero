@@ -29,7 +29,7 @@ class ReservationFactory extends Factory
             'time' => $this->faker->time(),
             'capacity' => $this->faker->numberBetween(1,70),
             'comment' => $this->faker->paragraph(),
-            'pay' => $this->faker->float(),
+            'pay' => $this->faker->numberBetween(1,70)
         ];
     }
 }
