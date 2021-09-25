@@ -3187,74 +3187,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -3391,7 +3323,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context4.prev = _context4.next) {
               case 0:
                 _context4.next = 2;
-                return axios.put('/createreservations/' + _this4.id, _this4.createreservation);
+                return axios.put('/createreservations/' + _this4.id, _this4.createreservation).then(function (response) {
+                  _this4.$swal({
+                    icon: 'success',
+                    title: 'Reservación Actualizada'
+                  });
+                })["catch"](function (error) {
+                  if (error.response.status === 422) {
+                    _this4.$swal({
+                      icon: 'error',
+                      title: 'Ocurrio un error'
+                    });
+
+                    _this4.errors = error.response.data.errors;
+                  }
+                });
 
               case 2:
                 res = _context4.sent;
@@ -46223,11 +46169,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre")]),
         _vm._v(" "),
-        _c(
-          "th",
-          { staticStyle: { "padding-left": "50px" }, attrs: { scope: "col" } },
-          [_vm._v("email")]
-        ),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("email")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Fecha")]),
         _vm._v(" "),

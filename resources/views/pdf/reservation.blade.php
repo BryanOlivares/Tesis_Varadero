@@ -84,7 +84,7 @@
                 <td>{{$aceptreservation->capacity}}</td>
                 <td>{{$aceptreservation->state}}</td> 
                 <td>{{$aceptreservation->comment}}</td> 
-                <td>{{$aceptreservation->pay}}</td> 
+                <td>${{$aceptreservation->pay}}</td> 
             </tr>
             @endforeach
         </tbody>

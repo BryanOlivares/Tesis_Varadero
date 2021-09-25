@@ -17,53 +17,9 @@
                         </button>
                     </div>
 
-                    <!-- Modal body -->
+              
                     <div class="modal-body" style="top: -20px; font-weight: bold;">
-                        <!-- <div class="my-1">
-                            <label for="nombre">Nombre del servicio</label>
-                            <input
-                                v-model="createreservation.service"
-                                disabled type="text"
-                                class="form-control"
-                                id="service"
-                                placeholder="Nombre del servicio">
-                        </div>
-                        <div class="my-1">
-                            <label for="nombre">Nombre</label>
-                            <input
-                                v-model="createreservation.name"
-                                disabled type="text"
-                                class="form-control"
-                                id="service"
-                                placeholder="Nombre del servicio">
-                        </div>
-                        <div class="my-1">
-                            <label for="nombre">Email</label>
-                            <input
-                                v-model="createreservation.email"
-                                disabled type="email"
-                                class="form-control"
-                                id="service"
-                                placeholder="Nombre del servicio">
-                        </div>
-                        <div class="my-1">
-                            <label for="nombre">Date</label>
-                            <input
-                                v-model="createreservation.date"
-                                disabled type="date"
-                                class="form-control"
-                                id="service"
-                                placeholder="Nombre del servicio">
-                        </div>
-                        <div class="my-1">
-                            <label for="nombre">Time</label>
-                            <input
-                                v-model="createreservation.time"
-                                disabled type="time"
-                                class="form-control"
-                                id="service"
-                                placeholder="Nombre del servicio">
-                        </div> -->
+                        
                         <div class="my-1">
                             <label for="nombre">Cant.Usuarios</label>
                             <input
@@ -99,20 +55,6 @@
                                 id="pay"
                                 placeholder="Valor a pagar">
                         </div>
-                        <!-- <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Descripción</label>
-                        <textarea class="form-control" id="description" rows="2" v-model="service.description" placeholder="Descripción del servicio"></textarea>
-                        </div>
-                        <div class="my-1">
-                            <label for="Hora">Hora</label>
-                            <input
-                                v-model="service.time1"
-                                type="time"
-                                class="form-control"
-                                id="time1"
-                                placeholder="Hora de inicio"
-                            >
-                        </div> -->
                         <button
                             @click="cerrarModal()"
                             type="button"
@@ -149,7 +91,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Servicio</th>
                     <th scope="col">Nombre</th>
-                    <th scope="col" style="padding-left: 50px;">email</th>
+                    <th scope="col">email</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Hora</th>
                     <th scope="col">Cant.Usuarios</th>
@@ -171,21 +113,11 @@
                     <td>{{ver.state}}</td>
                     <td>{{ver.comment}}</td>
                     <td>${{ver.pay}}</td>
-                     <button
-                            @click="
-                                modificar = true;
-                                abrirModal(ver);
-                            "
-                            class="btn btn-warning" title="Eliminar"
-                        ><i class="fas fa-edit"></i>
-                        </button>
-                        <button @click="eliminar(ver.id)" class="btn btn-danger" title="Eliminar"><i class="fas fa-trash"></i></button>
+                    <button @click="modificar = true; abrirModal(ver);" class="btn btn-warning" title="Eliminar"><i class="fas fa-edit"></i>
+                    </button>
+                    <button @click="eliminar(ver.id)" class="btn btn-danger" title="Eliminar"><i class="fas fa-trash"></i></button>
                         
-                    <!-- <button
-                            @click="eliminar2(ver.id)"
-                            class="btn btn-danger"
-                        ><i class="fas fa-trash"></i>
-                    </button> -->
+                   
                 </tr>
             </tbody>
         </table>
@@ -251,6 +183,14 @@ export default {
         },
         async guardar1(){
             const res=await axios.put('/createreservations/'+ this.id, this.createreservation)
+            .then(response =>{
+                        this.$swal({icon:'success', title:'Reservación Actualizada'})
+                }).catch(error => {
+                    if(error.response.status === 422){
+                        this.$swal({icon:'error', title:'Ocurrio un error'})
+                        this.errors = error.response.data.errors;
+                    }
+                });
         },
 
         abrirModal(data = {}) {
