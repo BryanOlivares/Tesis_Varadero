@@ -9,13 +9,16 @@
                         <router-link to="/home" aria-current="page" href="#" class="nav-link">Home</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link to="/view_reservations" aria-current="page" href="#" class="nav-link">Ver Reservaciones</router-link>
+                        <router-link to="/view_reservations" aria-current="page" href="#" class="nav-link">Ver reservaciones</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link to="/services" aria-current="page" href="#" class="nav-link">Gestionar las servicios</router-link>
+                        <router-link to="/services" aria-current="page" href="#" class="nav-link">Gestionar servicios</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link to="/aceptreservations" aria-current="page" href="#" class="nav-link">Reservaciones Aceptadas</router-link>
+                        <router-link to="/aceptreservations" aria-current="page" href="#" class="nav-link">Reservaciones aceptadas</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link to="/reports/pdf" aria-current="page" href="#" class="nav-link">Descargar reporte</router-link>
                     </li>
                 </ul>
             </div>

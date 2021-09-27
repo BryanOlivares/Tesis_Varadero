@@ -3,14 +3,14 @@
 @section('content')
 
 <div class="container">
-   <nav class="navbar navbar-dark bg-dark" style="right: 30px; bottom: 25px;">
+   <nav class="navbar navbar-dark bg-dark">
       <div class="container">
           <div class="justify-content-center">
               <ul class="nav nav-tabs" style="
               border-bottom-width: 0px;">
                   <li class="nav-item">
                       <router-link to="/home"  class="nav-link" style="
-                      margin-left: 400px;">Home</router-link>
+                      margin-left: 0px;">Home</router-link>
                   </li>
                   <li class="nav-item">
                       <router-link to="/createreservations" class="nav-link">Realiza tu Reservación</router-link>

@@ -17,6 +17,7 @@ class AceptReservationController extends Controller
     public function index()
     {
         return AceptReservation::get();
+        
     }
 
     /**

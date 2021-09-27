@@ -8,7 +8,7 @@
             type="button"
             class="btn btn-dark"
         ><i class="fas fa-plus-circle"></i>
-            Añadir Servicio
+            Añadir servicio
         </button>
 
         <!-- The Modal -->

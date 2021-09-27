@@ -21,6 +21,7 @@ import View from './components/Viewservice.vue'
 import Profile from './components/User.vue'
 import Historial from './components/History.vue'
 import Aceptreservation from './components/Acetreservation.vue'
+import Files from './components/File.vue'
 
 
 
@@ -64,6 +65,10 @@ const router = new VueRouter({
         { path: '/aceptreservations',
           name: 'aceptreservations',
           component: Aceptreservation,
+        },
+        { path: '/reports/pdf',
+          name: 'reports/pdf',
+          component: Files,
         },
     ]
 })

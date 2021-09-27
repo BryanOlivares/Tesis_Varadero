@@ -1,8 +1,8 @@
 <template>
     <div >
       <div class="pdf">
-       <button @click="createPDF" type="button" class="btn btn-dark"><i class="fas fa-plus-circle"></i>
-            Descargar Reporte
+       <button @click="createPDF" type="button" class="btn btn-dark"><i class="fas fa-directions"></i>
+            Ir a la Descarga
         </button>
       </div>
         <table class="table table-success table-striped">
@@ -14,7 +14,7 @@
                     <th scope="col">Email</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Hora</th>
-                    <th scope="col">cant.Usarios</th>
+                    <th scope="col">Cant.Usuarios</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Observaciones</th>
                     <th scope="col">Valor a pagar</th>
@@ -57,7 +57,7 @@ export default {
     },
     async createPDF() {
 
-      this.$router.push("/reports");
+      this.$router.push("/reports/pdf");
       this.listar();
     },
     

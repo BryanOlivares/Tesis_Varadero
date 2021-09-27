@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-   <nav class="navbar navbar-dark bg-dark" style="right: 30px; bottom: 25px;">
+   <nav class="navbar navbar-dark bg-dark" >
       <div class="container">
           <div class="justify-content-center">
               <ul class="nav nav-tabs" style="

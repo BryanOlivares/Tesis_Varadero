@@ -33,8 +33,12 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
 
+Route::get('/reports', [FileController::class, 'index'])->name('reports.index');
 
-Route::apiResource('/reports', FileController::class)->names('reports')->middleware('verified');
+Route::get('/reports/pdf', [FileController::class, 'exportPdf'])->name('reports.pdf');
+
+//Route::get('/reports', [App\Http\Controllers\FileController::class, 'exportPdf'])->name('reports');
+//Route::apiResource('/reports', FileController::class)->names('reports')->middleware('verified');
 Route::apiResource('/services', ServiceController::class)->names('services')->middleware('verified');
 Route::apiResource('/reservations', ReservationController::class)->names('reservations')->middleware('verified');
 Route::apiResource('/createreservations', CreateReservationController::class)->names('createreservations')->middleware('verified');

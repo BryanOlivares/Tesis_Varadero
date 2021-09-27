@@ -15,22 +15,31 @@ class FileController extends Controller
      */
     public function index()
     {
+        // $aceptreservations = AceptReservation::all();
+        // $precioTotal=0;
+        // foreach($aceptreservations as $item){
+        //     $precioTotal += $item['pay'];
+        // }
+        // $aceptreservations = AceptReservation::get();
+        // $pdf = PDF::loadView('pdf.reservation', compact('aceptreservations'));
+        // $pdf->setPaper('a4', 'landscape');
+        // return $pdf->download('reportes.pdf');
         $aceptreservations = AceptReservation::all();
-        $precioTotal=0;
-        foreach($aceptreservations as $item){
-            $precioTotal += $item['pay'];
-        }
-        $aceptreservations = AceptReservation::get();
-        $pdf = PDF::loadView('pdf.reservation', compact('aceptreservations'));
-        $pdf->setPaper('a4', 'landscape');
-        return $pdf->download('reportes.pdf');
+        return view('file')->with('aceptreservations', $aceptreservations);
         
     }
     public function exportPdf()
     {
         // $aceptreservations = AceptReservation::get();
         // $pdf = PDF::loadView('pdf.reservation', compact('aceptreservations'));
+        // $pdf->setPaper('a4', 'landscape');
         // return $pdf->download('reportes.pdf');
+        $aceptreservations = AceptReservation::get();
+        view()->share('aceptreservations', $aceptreservations);
+        $pdf = PDF::loadView('pdf.reservation', $aceptreservations);
+        $pdf->setPaper('a4', 'landscape');
+        return $pdf->download('Reportes-Varadero.pdf');
+        
         
     }
 

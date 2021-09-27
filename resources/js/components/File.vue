@@ -1,7 +1,7 @@
 <template>
    <div >
-       <button @click="createPDF" type="button" class="btn btn-dark"><i class="fas fa-plus-circle"></i>
-            Descargar Reporte
+       <button onclick="window.location.reload(); " type="button" class="btn btn-dark"><i class="fas fa-file-download"></i>
+            Descargar reporte
         </button>
     </div>
 </template>
@@ -11,10 +11,11 @@ export default {
 
  methods: {
     
-    createPDF(){
-       this.$router.push('/reports');
+   //  createPDF(){
+   //     this.$router.push('/reports');
        
-    }
+   //  }
+    
  }
 }
 </script>
