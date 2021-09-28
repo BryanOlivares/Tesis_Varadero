@@ -3579,7 +3579,7 @@ var _user = document.head.querySelector('meta[name="user"]');
                 return axios["delete"]("/users/" + user).then(function (response) {
                   _this.$swal({
                     icon: 'success',
-                    title: 'Usuario eliminado con exito'
+                    title: 'Usuario eliminado con éxito'
                   });
 
                   _this.$router.push("/register");

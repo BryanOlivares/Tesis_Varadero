@@ -95,7 +95,7 @@ export default {
       async eliminar(user) {
             const res = await axios.delete("/users/" + user)
             .then(response =>{
-                        this.$swal({icon:'success', title:'Usuario eliminado con exito'})
+                        this.$swal({icon:'success', title:'Usuario eliminado con éxito'})
                          this.$router.push("/register")
                 }).catch(error => {
                     if(error.response.status === 422){
