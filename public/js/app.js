@@ -2716,6 +2716,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 var _user = document.head.querySelector('meta[name="user"]'); // let createreservation = document.head.querySelector('meta[name="createreservation"]');
 
 
@@ -45628,7 +45629,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Observación")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Valor a Pagar")])
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Valor a Pagar")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Acción")])
       ])
     ])
   }

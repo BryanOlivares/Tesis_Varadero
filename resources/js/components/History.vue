@@ -13,6 +13,7 @@
                     <th scope="col">Estado</th>
                     <th scope="col">Observación</th>
                     <th scope="col">Valor a Pagar</th>
+                    <th scope="col">Acción</th>
                 </tr>
             </thead>
             <tbody>
