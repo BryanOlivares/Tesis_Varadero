@@ -28,6 +28,8 @@
                     <td>{{ser.state}}</td>
                     <td>{{ser.comment}}</td>
                     <td>${{ser.pay}}</td>
+                     <button @click="eliminar(ser.id)" type="button" class="btn btn-danger"><i class="fas fa-trash"></i>
+                    </button>
                 </tr>
             </tbody>
         </table>
@@ -63,6 +65,11 @@ export default {
             const res = await axios.get("/createreservations");
             this.createreservations = res.data;
         },
+        async eliminar(id) {
+            const res = await axios.delete("/createreservations/" + id);
+            this.listar();
+        },
+    
     },
     created() {
         this.listar();

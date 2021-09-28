@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reservation;
 use App\Models\AceptReservation;
+use App\Models\CreateReservation;
 use Illuminate\Http\Request;
 
 class AceptReservationController extends Controller
@@ -63,6 +64,6 @@ class AceptReservationController extends Controller
      */
     public function destroy(AceptReservation $aceptReservation)
     {
-        //
+        $aceptReservation->delete();
     }
 }

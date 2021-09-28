@@ -2084,6 +2084,11 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
 //
 //
 //
@@ -2129,9 +2134,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   // name:'pdf',
   data: function data() {
-    return {
-      aceptreservations: []
-    };
+    return _defineProperty({
+      aceptreservations: {
+        service: "",
+        name: "",
+        email: "",
+        date: "",
+        time: "",
+        capacity: "",
+        state: "",
+        comment: "",
+        pay: ""
+      }
+    }, "aceptreservations", []);
   },
   methods: {
     listar: function listar() {
@@ -2177,7 +2192,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee2);
       }))();
-    } //   createPDF () {
+    } // async eliminar(id) {
+    //         const res = await axios.delete("/aceptreservations/" + id);  
+    //         this.listar();
+    //     },
+    //   createPDF () {
     //   let pdfName = 'test'; 
     //   var doc = new jsPDF();
     //   doc.text("Hello World", 10, 10);
@@ -2695,6 +2714,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 var _user = document.head.querySelector('meta[name="user"]'); // let createreservation = document.head.querySelector('meta[name="createreservation"]');
 
 
@@ -2737,6 +2758,31 @@ var _user = document.head.querySelector('meta[name="user"]'); // let createreser
             }
           }
         }, _callee);
+      }))();
+    },
+    eliminar: function eliminar(id) {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return axios["delete"]("/createreservations/" + id);
+
+              case 2:
+                res = _context2.sent;
+
+                _this2.listar();
+
+              case 4:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
       }))();
     }
   },
@@ -45533,7 +45579,21 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(ser.comment))]),
                 _vm._v(" "),
-                _c("td", [_vm._v("$" + _vm._s(ser.pay))])
+                _c("td", [_vm._v("$" + _vm._s(ser.pay))]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.eliminar(ser.id)
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fas fa-trash" })]
+                )
               ]
             )
           }),
@@ -46563,7 +46623,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Email")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Accion")])
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Acción")])
       ])
     ])
   }

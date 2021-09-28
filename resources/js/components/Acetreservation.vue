@@ -18,6 +18,7 @@
                     <th scope="col">Estado</th>
                     <th scope="col">Observaciones</th>
                     <th scope="col">Valor a pagar</th>
+                    <!-- <th scope="col">Acción</th> -->
 
                 </tr>
             </thead>
@@ -33,6 +34,8 @@
                     <td>{{crear.state}}</td> 
                     <td>{{crear.comment}}</td> 
                     <td>${{crear.pay}}</td> 
+                    <!-- <button @click="eliminar(crear.id)" type="button" class="btn btn-danger"><i class="fas fa-trash"></i>
+                    </button> -->
                 </tr>
             </tbody>
         </table>
@@ -46,6 +49,17 @@ export default {
   // name:'pdf',
   data(){
     return{
+      aceptreservations: {
+                service: "",
+                name: "",
+                email: "",
+                date: "",
+                time: "",
+                capacity: "",
+                state: "",
+                comment: "",
+                pay: ""
+            },
       aceptreservations:[],
     }
     
@@ -60,6 +74,10 @@ export default {
       this.$router.push("/reports/pdf");
       this.listar();
     },
+    // async eliminar(id) {
+    //         const res = await axios.delete("/aceptreservations/" + id);  
+    //         this.listar();
+    //     },
     
 
   //   createPDF () {

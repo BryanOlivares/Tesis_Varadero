@@ -47,7 +47,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Nombre de usuario</th>
                     <th scope="col">Email</th>  
-                    <th scope="col">Accion</th>
+                    <th scope="col">Acción</th>
                 </tr>
             </thead>
             <tbody>
