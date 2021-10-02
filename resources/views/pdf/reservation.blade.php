@@ -16,8 +16,7 @@
         }
 
         body {
-            margin: 3cm 2cm 2cm;
-            
+            margin: 3cm 2cm 2cm;  
         }
 
         header {
@@ -94,18 +93,13 @@
                 $precioTotal=0;
                 foreach($aceptreservations as $item)
                 $precioTotal += $item['pay']
-            @endphp
+        @endphp
         <thead>
             <tr>
                     <th scope="col" >Reporte Total:</th>
                     <th>${{$precioTotal}}</th>
             </tr>
         </thead>
-        <tbody>
-            
-            
-            
-        </tbody>
     </table>
     
 </body>

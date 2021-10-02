@@ -1,10 +1,17 @@
 <template>
     <div >
       <div class="pdf">
-       <button @click="createPDF" type="button" class="btn btn-dark"><i class="fas fa-directions"></i>
+       <!-- <button @click="createPDF" type="button" class="btn btn-dark"><i class="fas fa-directions"></i>
             Ir a la Descarga
-        </button>
+        </button> -->
+        <button class="btn btn-dark" onclick="window.location.href='/reports'"><i class="fas fa-directions"></i> Ir a los reportes</button>
+
+        <!-- <form class="form-inline my-2 my-lg-0 float-right">
+          <input class="form-control mr-sm-2" v-model="params.fbuscar" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-success my-2 my-sm-0" @click.prevent="loadData">Search</button>
+        </form> -->
       </div>
+      
         <table class="table table-success table-striped">
             <thead class="thead-dark">
                 <tr>
@@ -49,6 +56,9 @@ export default {
   // name:'pdf',
   data(){
     return{
+      params:{
+        fbuscar:''
+      },
       aceptreservations: {
                 service: "",
                 name: "",
@@ -61,8 +71,7 @@ export default {
                 pay: ""
             },
       aceptreservations:[],
-    }
-    
+    } 
   },
   methods: {
     async listar (){
@@ -71,9 +80,14 @@ export default {
     },
     async createPDF() {
 
-      this.$router.push("/reports/pdf");
+      this.$router.replace("/reports");
       this.listar();
     },
+    // loadData(){
+    //   axios.get("/aceptreservations", {params : this.params}).then(response =>{
+    //     this.data = response.data.records;
+    //   });
+    // }
     // async eliminar(id) {
     //         const res = await axios.delete("/aceptreservations/" + id);  
     //         this.listar();

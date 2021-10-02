@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
 use App\Models\AceptReservation;
+use App\Models\View;
+
 
 class FileController extends Controller
 {
@@ -13,35 +15,29 @@ class FileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // $aceptreservations = AceptReservation::all();
-        // $precioTotal=0;
-        // foreach($aceptreservations as $item){
-        //     $precioTotal += $item['pay'];
-        // }
-        // $aceptreservations = AceptReservation::get();
-        // $pdf = PDF::loadView('pdf.reservation', compact('aceptreservations'));
-        // $pdf->setPaper('a4', 'landscape');
-        // return $pdf->download('reportes.pdf');
-        $aceptreservations = AceptReservation::all();
-        return view('file')->with('aceptreservations', $aceptreservations);
+        
+        $fi = $request->fecha_ini.' 00:00:00';
+        $ff = $request->fecha_fin.' 23:59:59';
+        $aceptreservations = AceptReservation::whereBetween('date', [$fi, $ff])->get();
+        $total = $aceptreservations->sum('pay');
+        return view('file', compact('aceptreservations', 'total'));
         
     }
     public function exportPdf()
     {
-        // $aceptreservations = AceptReservation::get();
-        // $pdf = PDF::loadView('pdf.reservation', compact('aceptreservations'));
-        // $pdf->setPaper('a4', 'landscape');
-        // return $pdf->download('reportes.pdf');
+        
         $aceptreservations = AceptReservation::get();
         view()->share('aceptreservations', $aceptreservations);
         $pdf = PDF::loadView('pdf.reservation', $aceptreservations);
         $pdf->setPaper('a4', 'landscape');
         return $pdf->download('Reportes-Varadero.pdf');
-        
-        
+          
     }
+   
+
+
 
     /**
      * Store a newly created resource in storage.

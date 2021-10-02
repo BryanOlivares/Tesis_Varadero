@@ -22,6 +22,7 @@ import Profile from './components/User.vue'
 import Historial from './components/History.vue'
 import Aceptreservation from './components/Acetreservation.vue'
 import Files from './components/File.vue'
+import Files1 from './components/File1.vue'
 
 
 
@@ -69,6 +70,10 @@ const router = new VueRouter({
         { path: '/reports/pdf',
           name: 'reports/pdf',
           component: Files,
+        },
+        { path: '/reports',
+          name: 'reports',
+          component: Files1,
         },
     ]
 })
