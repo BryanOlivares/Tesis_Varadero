@@ -9,7 +9,7 @@
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">{{tituloModal}}</h4>
-        <button @click="cerrarModal();" type="button" class="close" data-dismiss="modal">&times;</button>
+        <button @click="cerrarModal();" onclick="window.location.href='/users'" type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
       <!-- Modal body -->
@@ -21,6 +21,7 @@
                     class="form-control"
                     id="name"
                     placeholder="Nombre de Usuario">
+                    <span class="text-danger" v-if="errores.name">{{errores.name[0]}}</span>
             </div>
             <div class="my-1">
                 <label for="nombre">Email</label>
@@ -29,13 +30,15 @@
                     class="form-control"
                     id="email"
                     placeholder="Email">
+                    <span class="text-danger" v-if="errores.email">{{errores.email[0]}}</span>
             </div>
       </div>
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button  @click="cerrarModal();" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button   @click="guardar();" type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
+       
+       <button  @click="cerrarModal();"  onclick="window.location.href='/users'" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button   @click="guardar();"   type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
       </div>
 
     </div>
@@ -52,8 +55,8 @@
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">{{user.id}}</th>
-                    <td>{{user.name}}</td>
+                    <th scope="row" >{{user.id}}</th>
+                    <td> {{user.name}}</td>
                     <td>{{user.email}}</td>
                     <button @click="modificar = true; abrirModal(user)" class="btn btn-warning"><i class="fas fa-edit"></i>
                     </button>
@@ -81,6 +84,7 @@ export default {
       tituloModal:'',
       modal:0,
       id:0,
+      errores:{},
     }
   },
 
@@ -93,44 +97,56 @@ export default {
 
   methods: {
       async eliminar(user) {
-            const res = await axios.delete("/users/" + user)
-            .then(response =>{
-                        this.$swal({icon:'success', title:'Usuario eliminado con éxito'})
-                         this.$router.push("/register")
-                }).catch(error => {
-                    if(error.response.status === 422){
-                        this.$swal({icon:'error', title:'Ocurrio un error'})
-                        this.errors = error.response.data.errors;
-                    }
-                });
+          Swal.fire({
+            title: "¿Está seguro de eliminar?",
+            text: "Su usuario se eliminará permanentemente!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Cancelar',
+            confirmButtonText: 'Si, eliminar!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete("/users/" + user)
+                Swal.fire(
+                'Eliminado!',
+                'Usuario eliminado correctamente',
+                'success'
+                )  
+               window.location.href='/register';
+            }
+            })
+          
+            
         },
         async guardar(){
+            try {
             if(this.modificar){
                 const res=await axios.put('/users/'+ this.id, this.user)
-            }else{
-                const res=await axios.post('/users', this.user)
             }
             this.cerrarModal();
-
+            } catch (error) {
+                if(error.response.data){
+                    this.errores=error.response.data.errors
+                }
+            }
 
         },
         abrirModal(data={}){
             this.modal=1;
             if(this.modificar){
-                this.id=data.id,
-                this.tituloModal="Actualizar Usuario"
+                (this.id=data.id),(this.tituloModal="Actualizar Usuario");
                 this.users.name=data.name;
                 this.users.email=data.email;
 
             }else{
-                this.id=0,
-                this.tituloModal="Crear Usuario"
-                this.users.name='';
-                this.users.email='';
+                
             }
         },
         cerrarModal(){
             this.modal=0;
+            this.errores={};
         },
         
   },  

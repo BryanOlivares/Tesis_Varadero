@@ -2517,6 +2517,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 var _user = document.head.querySelector('meta[name="user"]');
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2638,6 +2640,7 @@ var _user = document.head.querySelector('meta[name="user"]');
     },
     cerrarform: function cerrarform() {
       this.$router.push("/home");
+      this.errores = {};
     }
   },
   created: function created() {
@@ -3017,24 +3020,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       service: {
         service: "",
         description: "",
-        capacity: "",
         time1: "",
         time2: "",
         date1: "",
-        date2: "" // user_id: "",
-
+        date2: ""
       },
       id: 0,
       modificar: true,
       modal: 0,
       tituloModal: "",
-      services: []
+      services: [],
+      errores: {}
     };
   },
   methods: {
@@ -3097,37 +3105,50 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
+                _context3.prev = 0;
+
                 if (!_this3.modificar) {
-                  _context3.next = 6;
+                  _context3.next = 7;
                   break;
                 }
 
-                _context3.next = 3;
+                _context3.next = 4;
                 return axios.put("/services/" + _this3.id, _this3.service);
 
-              case 3:
+              case 4:
                 res = _context3.sent;
-                _context3.next = 9;
+                _context3.next = 10;
                 break;
 
-              case 6:
-                _context3.next = 8;
+              case 7:
+                _context3.next = 9;
                 return axios.post("/services", _this3.service);
 
-              case 8:
+              case 9:
                 _res = _context3.sent;
 
-              case 9:
+              case 10:
                 _this3.cerrarModal();
 
                 _this3.listar();
 
-              case 11:
+                _context3.next = 17;
+                break;
+
+              case 14:
+                _context3.prev = 14;
+                _context3.t0 = _context3["catch"](0);
+
+                if (_context3.t0.response.data) {
+                  _this3.errores = _context3.t0.response.data.errors;
+                }
+
+              case 17:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3);
+        }, _callee3, null, [[0, 14]]);
       }))();
     },
     abrirModal: function abrirModal() {
@@ -3146,7 +3167,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.id = 0, this.tituloModal = "Crear Servicio";
         this.service.service = "";
         this.service.description = "";
-        this.service.capacity = "";
         this.service.time1 = "";
         this.service.time2 = "";
         this.service.date1 = "";
@@ -3155,6 +3175,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     cerrarModal: function cerrarModal() {
       this.modal = 0;
+      this.errores = {};
     }
   },
   created: function created() {
@@ -3183,6 +3204,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -3588,6 +3610,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 var _user = document.head.querySelector('meta[name="user"]');
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -3600,7 +3625,8 @@ var _user = document.head.querySelector('meta[name="user"]');
       modificar: true,
       tituloModal: '',
       modal: 0,
-      id: 0
+      id: 0,
+      errores: {}
     };
   },
   computed: {
@@ -3610,37 +3636,29 @@ var _user = document.head.querySelector('meta[name="user"]');
   },
   methods: {
     eliminar: function eliminar(user) {
-      var _this = this;
-
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
-                return axios["delete"]("/users/" + user).then(function (response) {
-                  _this.$swal({
-                    icon: 'success',
-                    title: 'Usuario eliminado con éxito'
-                  });
-
-                  _this.$router.push("/register");
-                })["catch"](function (error) {
-                  if (error.response.status === 422) {
-                    _this.$swal({
-                      icon: 'error',
-                      title: 'Ocurrio un error'
-                    });
-
-                    _this.errors = error.response.data.errors;
+                Swal.fire({
+                  title: "¿Está seguro de eliminar?",
+                  text: "Su usuario se eliminará permanentemente!",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  cancelButtonText: 'Cancelar',
+                  confirmButtonText: 'Si, eliminar!'
+                }).then(function (result) {
+                  if (result.isConfirmed) {
+                    axios["delete"]("/users/" + user);
+                    Swal.fire('Eliminado!', 'Usuario eliminado correctamente', 'success');
+                    window.location.href = '/register';
                   }
                 });
 
-              case 2:
-                res = _context.sent;
-
-              case 3:
+              case 1:
               case "end":
                 return _context.stop();
             }
@@ -3649,44 +3667,47 @@ var _user = document.head.querySelector('meta[name="user"]');
       }))();
     },
     guardar: function guardar() {
-      var _this2 = this;
+      var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-        var res, _res;
-
+        var res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                if (!_this2.modificar) {
-                  _context2.next = 6;
+                _context2.prev = 0;
+
+                if (!_this.modificar) {
+                  _context2.next = 5;
                   break;
                 }
 
-                _context2.next = 3;
-                return axios.put('/users/' + _this2.id, _this2.user);
+                _context2.next = 4;
+                return axios.put('/users/' + _this.id, _this.user);
 
-              case 3:
+              case 4:
                 res = _context2.sent;
-                _context2.next = 9;
+
+              case 5:
+                _this.cerrarModal();
+
+                _context2.next = 11;
                 break;
 
-              case 6:
-                _context2.next = 8;
-                return axios.post('/users', _this2.user);
-
               case 8:
-                _res = _context2.sent;
+                _context2.prev = 8;
+                _context2.t0 = _context2["catch"](0);
 
-              case 9:
-                _this2.cerrarModal();
+                if (_context2.t0.response.data) {
+                  _this.errores = _context2.t0.response.data.errors;
+                }
 
-              case 10:
+              case 11:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2);
+        }, _callee2, null, [[0, 8]]);
       }))();
     },
     abrirModal: function abrirModal() {
@@ -3697,14 +3718,11 @@ var _user = document.head.querySelector('meta[name="user"]');
         this.id = data.id, this.tituloModal = "Actualizar Usuario";
         this.users.name = data.name;
         this.users.email = data.email;
-      } else {
-        this.id = 0, this.tituloModal = "Crear Usuario";
-        this.users.name = '';
-        this.users.email = '';
-      }
+      } else {}
     },
     cerrarModal: function cerrarModal() {
       this.modal = 0;
+      this.errores = {};
     }
   }
 });
@@ -3730,12 +3748,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -44851,22 +44863,6 @@ var render = function() {
                     "router-link",
                     {
                       staticClass: "nav-link",
-                      attrs: { to: "/home", "aria-current": "page", href: "#" }
-                    },
-                    [_vm._v("Home")]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "nav-item" },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "nav-link",
                       attrs: {
                         to: "/view_reservations",
                         "aria-current": "page",
@@ -45335,7 +45331,7 @@ var render = function() {
             ],
             staticClass: "form-control",
             staticStyle: { width: "230px" },
-            attrs: { type: "date" },
+            attrs: { type: "date", lang: "es", format: "YYYY-MM-dd" },
             domProps: { value: _vm.fields.date },
             on: {
               input: function($event) {
@@ -45886,7 +45882,13 @@ var render = function() {
                         _vm.$set(_vm.service, "service", $event.target.value)
                       }
                     }
-                  })
+                  }),
+                  _vm._v(" "),
+                  _vm.errores.service
+                    ? _c("span", { staticClass: "text-danger" }, [
+                        _vm._v(_vm._s(_vm.errores.service[0]))
+                      ])
+                    : _vm._e()
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
@@ -45924,11 +45926,19 @@ var render = function() {
                         )
                       }
                     }
-                  })
+                  }),
+                  _vm._v(" "),
+                  _vm.errores.description
+                    ? _c("span", { staticClass: "text-danger" }, [
+                        _vm._v(_vm._s(_vm.errores.description[0]))
+                      ])
+                    : _vm._e()
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "my-1" }, [
-                  _c("label", { attrs: { for: "Hora" } }, [_vm._v("Hora")]),
+                  _c("label", { attrs: { for: "Hora" } }, [
+                    _vm._v("Hora de Inicio")
+                  ]),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -45954,11 +45964,19 @@ var render = function() {
                         _vm.$set(_vm.service, "time1", $event.target.value)
                       }
                     }
-                  })
+                  }),
+                  _vm._v(" "),
+                  _vm.errores.time1
+                    ? _c("span", { staticClass: "text-danger" }, [
+                        _vm._v(_vm._s(_vm.errores.time1[0]))
+                      ])
+                    : _vm._e()
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "my-1" }, [
-                  _c("label", { attrs: { for: "hora" } }, [_vm._v("Hora")]),
+                  _c("label", { attrs: { for: "hora" } }, [
+                    _vm._v("Hora Final")
+                  ]),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -45984,7 +46002,13 @@ var render = function() {
                         _vm.$set(_vm.service, "time2", $event.target.value)
                       }
                     }
-                  })
+                  }),
+                  _vm._v(" "),
+                  _vm.errores.time2
+                    ? _c("span", { staticClass: "text-danger" }, [
+                        _vm._v(_vm._s(_vm.errores.time2[0]))
+                      ])
+                    : _vm._e()
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "my-1" }, [
@@ -46016,7 +46040,13 @@ var render = function() {
                         _vm.$set(_vm.service, "date1", $event.target.value)
                       }
                     }
-                  })
+                  }),
+                  _vm._v(" "),
+                  _vm.errores.date1
+                    ? _c("span", { staticClass: "text-danger" }, [
+                        _vm._v(_vm._s(_vm.errores.date1[0]))
+                      ])
+                    : _vm._e()
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "my-1" }, [
@@ -46048,7 +46078,13 @@ var render = function() {
                         _vm.$set(_vm.service, "date2", $event.target.value)
                       }
                     }
-                  })
+                  }),
+                  _vm._v(" "),
+                  _vm.errores.date2
+                    ? _c("span", { staticClass: "text-danger" }, [
+                        _vm._v(_vm._s(_vm.errores.date2[0]))
+                      ])
+                    : _vm._e()
                 ])
               ]
             ),
@@ -46616,7 +46652,11 @@ var render = function() {
               "button",
               {
                 staticClass: "close",
-                attrs: { type: "button", "data-dismiss": "modal" },
+                attrs: {
+                  onclick: "window.location.href='/users'",
+                  type: "button",
+                  "data-dismiss": "modal"
+                },
                 on: {
                   click: function($event) {
                     return _vm.cerrarModal()
@@ -46657,7 +46697,13 @@ var render = function() {
                     _vm.$set(_vm.user, "name", $event.target.value)
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _vm.errores.name
+                ? _c("span", { staticClass: "text-danger" }, [
+                    _vm._v(_vm._s(_vm.errores.name[0]))
+                  ])
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "my-1" }, [
@@ -46683,7 +46729,13 @@ var render = function() {
                     _vm.$set(_vm.user, "email", $event.target.value)
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _vm.errores.email
+                ? _c("span", { staticClass: "text-danger" }, [
+                    _vm._v(_vm._s(_vm.errores.email[0]))
+                  ])
+                : _vm._e()
             ])
           ]),
           _vm._v(" "),
@@ -46692,7 +46744,11 @@ var render = function() {
               "button",
               {
                 staticClass: "btn btn-secondary",
-                attrs: { type: "button", "data-dismiss": "modal" },
+                attrs: {
+                  onclick: "window.location.href='/users'",
+                  type: "button",
+                  "data-dismiss": "modal"
+                },
                 on: {
                   click: function($event) {
                     return _vm.cerrarModal()
@@ -46727,7 +46783,7 @@ var render = function() {
         _c("tr", [
           _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(_vm.user.id))]),
           _vm._v(" "),
-          _c("td", [_vm._v(_vm._s(_vm.user.name))]),
+          _c("td", [_vm._v(" " + _vm._s(_vm.user.name))]),
           _vm._v(" "),
           _c("td", [_vm._v(_vm._s(_vm.user.email))]),
           _vm._v(" "),

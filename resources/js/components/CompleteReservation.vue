@@ -60,7 +60,7 @@
                         v-model="fields.time"
                         class="form-control"
                         style="width: 230px;margin-left: 355px;"
-                    />
+                    >
                     <div
                         class="alert alert-danger"
                         v-if="errors && errors.time"
@@ -124,9 +124,11 @@
                     <input
                         type="date"
                         v-model="fields.date"
+                        lang="es" 
+                        format="YYYY-MM-dd"
                         class="form-control"
                         style="width: 230px;"
-                    />
+                    >
                     <div
                         class="alert alert-danger"
                         v-if="errors && errors.date"
@@ -222,6 +224,7 @@
 
 <script>
 let user = document.head.querySelector('meta[name="user"]');
+
 export default {
     data() {
         return {
@@ -287,6 +290,7 @@ export default {
 
         cerrarform() {
             this.$router.push("/home");
+            this.errores={};
         }
     },
     created() {

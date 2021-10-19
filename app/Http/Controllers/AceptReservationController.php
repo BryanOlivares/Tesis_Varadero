@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Reservation;
 use App\Models\AceptReservation;
 use App\Models\CreateReservation;
+use App\Http\Requests\AceptReservationStoreRequest;
 use Illuminate\Http\Request;
 
 class AceptReservationController extends Controller

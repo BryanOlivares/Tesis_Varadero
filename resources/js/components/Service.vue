@@ -38,13 +38,15 @@
                                 class="form-control"
                                 id="service"
                                 placeholder="Nombre del servicio">
+                            <span class="text-danger" v-if="errores.service">{{errores.service[0]}}</span>
                         </div>
                         <div class="form-group">
                         <label for="exampleFormControlTextarea1">Descripción</label>
                         <textarea class="form-control" id="description" rows="2" v-model="service.description" placeholder="Descripción del servicio"></textarea>
+                         <span class="text-danger" v-if="errores.description">{{errores.description[0]}}</span>
                         </div>
                         <div class="my-1">
-                            <label for="Hora">Hora</label>
+                            <label for="Hora">Hora de Inicio</label>
                             <input
                                 v-model="service.time1"
                                 type="time"
@@ -52,9 +54,10 @@
                                 id="time1"
                                 placeholder="Hora de inicio"
                             >
+                             <span class="text-danger" v-if="errores.time1">{{errores.time1[0]}}</span>
                         </div>
                         <div class="my-1">
-                            <label for="hora">Hora</label>
+                            <label for="hora">Hora Final</label>
                             <input
                                 v-model="service.time2"
                                 type="time"
@@ -62,6 +65,7 @@
                                 id="time2"
                                 placeholder="Hora final"
                             >
+                             <span class="text-danger" v-if="errores.time2">{{errores.time2[0]}}</span>
                         </div>
                         <div class="my-1">
                             <label for="fecha">Fecha de Inicio</label>
@@ -72,6 +76,7 @@
                                 id="date1"
                                 placeholder="Fecha de inicio"
                             >
+                             <span class="text-danger" v-if="errores.date1">{{errores.date1[0]}}</span>
                         </div>
                         <div class="my-1">
                             <label for="fecha">Fecha Final</label>
@@ -82,6 +87,7 @@
                                 id="date2"
                                 placeholder="Fecha final"
                             >
+                             <span class="text-danger" v-if="errores.date2">{{errores.date2[0]}}</span>
                         </div>
                         <!-- <div class="my-1">
                             <label for="fecha">Uusario</label>
@@ -166,18 +172,18 @@ export default {
             service: {
                 service: "",
                 description: "",
-                capacity: "",
                 time1: "",
                 time2: "",
                 date1: "",
                 date2: "",
-                // user_id: "",
+                
             },
             id: 0,
             modificar: true,
             modal: 0,
             tituloModal: "",
-            services: []
+            services: [],
+            errores:{},
         };
     },
     methods: {
@@ -190,7 +196,8 @@ export default {
             this.listar();
         },
         async guardar() {
-            if (this.modificar) {
+            try {
+                if (this.modificar) {
                 const res = await axios.put(
                     "/services/" + this.id,
                     this.service
@@ -200,6 +207,13 @@ export default {
             }
             this.cerrarModal();
             this.listar();
+                
+            } catch (error) {
+                if(error.response.data){
+                    this.errores=error.response.data.errors
+                }
+            }
+            
         },
         abrirModal(data = {}) {
             this.modal = 1;
@@ -216,7 +230,6 @@ export default {
                 (this.id = 0), (this.tituloModal = "Crear Servicio");
                 this.service.service = "";
                 this.service.description = "";
-                this.service.capacity = "";
                 this.service.time1 = "";
                 this.service.time2 = "";
                 this.service.date1 = "";
@@ -226,10 +239,12 @@ export default {
         },
         cerrarModal() {
             this.modal = 0;
+            this.errores={};
         }
     },
     created() {
         this.listar();
+        
     }
 };
 </script>

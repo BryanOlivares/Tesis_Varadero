@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\CreateReservation;
+use App\Http\Requests\UserStoreRequest;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -50,9 +51,9 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UserStoreRequest $request, User $user)
     {
-        $user->update($request->all());
+        $user->update($request->validated());
     }
 
     /**

@@ -29,6 +29,7 @@
                                 id="service"
                                 placeholder="Nombre del servicio">
                         </div>
+                        
                         <div class="my-1">
                            <h5 class="text-center" style="padding-right: 1115px;  font-weight: bold;">Estado:</h5>
                             <select class="custom-select" v-model="createreservation.state" style="width: 237px; margin-left: 0px;">
@@ -126,6 +127,7 @@
 <script>
 export default {
     data() {
+        
         return {
             reservation: {
                 service: "",
@@ -192,7 +194,6 @@ export default {
                     }
                 });
         },
-
         abrirModal(data = {}) {
             this.modal = 1;
             if (this.modificar) {
