@@ -13,7 +13,7 @@
         <div class="card card-login card-hidden mb-3">
           <div class="card-header card-header-primary text-center">
             <h4 class="card-title"><strong>{{ __('Inicio de sesión') }}</strong></h4>
-            <div class="social-line">
+            {{-- <div class="social-line">
               <a href="#" class="btn btn-just-icon btn-link btn-white">
                 <i class="fa fa-facebook-square"></i>
               </a>
@@ -23,7 +23,7 @@
               <a href="#" class="btn btn-just-icon btn-link btn-white">
                 <i class="fa fa-google-plus"></i>
               </a>
-            </div>
+            </div> --}}
           </div>
           <div class="card-body">
             
@@ -59,7 +59,7 @@
             </div>
             <div class="form-check mr-auto ml-3 mt-3">
               <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Recuérdarme') }}
+                <input class="form-check-input" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Recordarme') }}
                 <span class="form-check-sign">
                   <span class="check"></span>
                 </span>
@@ -67,7 +67,7 @@
             </div>
           </div>
           <div class="card-footer justify-content-center">
-            <button type="submit" class="btn btn-primary btn-link btn-lg">{{ __('Acceder') }}</button>
+            <button type="submit" class="btn btn-primary btn-link btn-lg" style="font-weight: bold;">{{ __('Acceder') }}</button>
           </div>
         </div>
       </form>

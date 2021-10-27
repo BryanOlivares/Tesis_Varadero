@@ -2202,16 +2202,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         }, _callee2);
       }))();
-    } // loadData(){
-    //   axios.get("/aceptreservations", {params : this.params}).then(response =>{
-    //     this.data = response.data.records;
-    //   });
-    // }
-    // async eliminar(id) {
-    //         const res = await axios.delete("/aceptreservations/" + id);  
-    //         this.listar();
-    //     },
-    //   createPDF () {
+    },
+    eliminar: function eliminar(id) {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return axios["delete"]("/aceptreservations/" + id);
+
+              case 2:
+                res = _context3.sent;
+
+                _this3.listar();
+
+              case 4:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    } //   createPDF () {
     //   let pdfName = 'test'; 
     //   var doc = new jsPDF();
     //   doc.text("Hello World", 10, 10);
@@ -2556,7 +2572,7 @@ var _user = document.head.querySelector('meta[name="user"]');
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios.post("reservations", _this.fields).then(function (response) {
+                return axios.post("createreservations", _this.fields).then(function (response) {
                   _this.$swal({
                     icon: "success",
                     title: "Su reservación fue enviada, revise su historial"
@@ -2580,7 +2596,23 @@ var _user = document.head.querySelector('meta[name="user"]');
         }, _callee);
       }))();
     },
-    guardar: function guardar() {
+    // async guardar() {
+    //     const res = await axios
+    //         .post("createreservations", this.fields)
+    //         .then(response => {
+    //             this.$swal({
+    //                 icon: "success",
+    //                 title: "Reservación Guardada"
+    //             });
+    //             this.$router.push("/createreservations");
+    //         })
+    //         .catch(error => {
+    //             if (error.response.status === 422) {
+    //                 this.errors = error.response.data.errors;
+    //             }
+    //         });
+    // },
+    listar: function listar() {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
@@ -2590,52 +2622,18 @@ var _user = document.head.querySelector('meta[name="user"]');
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return axios.post("createreservations", _this2.fields).then(function (response) {
-                  _this2.$swal({
-                    icon: "success",
-                    title: "Reservación Guardada"
-                  });
-
-                  _this2.$router.push("/createreservations");
-                })["catch"](function (error) {
-                  if (error.response.status === 422) {
-                    _this2.errors = error.response.data.errors;
-                  }
-                });
+                return axios.get("/services");
 
               case 2:
                 res = _context2.sent;
+                _this2.services = res.data;
 
-              case 3:
+              case 4:
               case "end":
                 return _context2.stop();
             }
           }
         }, _callee2);
-      }))();
-    },
-    listar: function listar() {
-      var _this3 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-        var res;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                _context3.next = 2;
-                return axios.get("/services");
-
-              case 2:
-                res = _context3.sent;
-                _this3.services = res.data;
-
-              case 4:
-              case "end":
-                return _context3.stop();
-            }
-          }
-        }, _callee3);
       }))();
     },
     cerrarform: function cerrarform() {
@@ -2806,32 +2804,11 @@ var _user = document.head.querySelector('meta[name="user"]'); // let createreser
           }
         }, _callee);
       }))();
-    },
-    eliminar: function eliminar(id) {
-      var _this2 = this;
+    } // async eliminar(id) {
+    //     const res = await axios.delete("/createreservations/" + id);
+    //     this.listar();
+    // },
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-        var res;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.next = 2;
-                return axios["delete"]("/createreservations/" + id);
-
-              case 2:
-                res = _context2.sent;
-
-                _this2.listar();
-
-              case 4:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }))();
-    }
   },
   created: function created() {
     this.listar();
@@ -3333,17 +3310,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      reservation: {
-        service: "",
-        name: "",
-        email: "",
-        date: "",
-        time: "",
-        capacity: "",
-        state: "",
-        comment: "",
-        pay: ""
-      },
+      // reservation: {
+      //     service: "",
+      //     name: "",
+      //     email: "",
+      //     date: "",
+      //     time: "",
+      //     capacity: "",
+      //     state: "",
+      //     comment: "",
+      //     pay: ""
+      // },
       createreservation: {
         service: "",
         name: "",
@@ -3359,7 +3336,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       modificar: true,
       modal: 0,
       tituloModal: "",
-      reservations: [],
+      // reservations: [],
       createreservations: []
     };
   },
@@ -3374,11 +3351,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios.get("/reservations");
+                return axios.get("/createreservations");
 
               case 2:
                 res = _context.sent;
-                _this.reservations = res.data;
+                _this.createreservations = res.data;
 
               case 4:
               case "end":
@@ -3398,7 +3375,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return axios["delete"]("/reservations/" + id);
+                return axios["delete"]("/createreservations/" + id);
 
               case 2:
                 res = _context2.sent;
@@ -44741,33 +44718,37 @@ var render = function() {
   return _c("div", [
     _vm._m(0),
     _vm._v(" "),
-    _c("table", { staticClass: "table table-success table-striped" }, [
+    _c("table", { staticClass: "table table-striped" }, [
       _vm._m(1),
       _vm._v(" "),
       _c(
         "tbody",
         _vm._l(_vm.aceptreservations, function(crear) {
-          return _c("tr", { key: crear.id }, [
-            _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(crear.id))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(crear.service))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(crear.name))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(crear.email))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(crear.date))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(crear.time))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(crear.capacity))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(crear.state))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(crear.comment))]),
-            _vm._v(" "),
-            _c("td", [_vm._v("$" + _vm._s(crear.pay))])
-          ])
+          return _c(
+            "tr",
+            { key: crear.id, staticStyle: { "font-weight": "bolder" } },
+            [
+              _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(crear.id))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(crear.service))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(crear.name))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(crear.email))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(crear.date))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(crear.time))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(crear.capacity))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(crear.state))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(crear.comment))]),
+              _vm._v(" "),
+              _c("td", [_vm._v("$" + _vm._s(crear.pay))])
+            ]
+          )
         }),
         0
       )
@@ -45539,7 +45520,7 @@ var render = function() {
         "button",
         {
           staticClass: "btn btn-secondary",
-          staticStyle: { "margin-left": "390px" },
+          staticStyle: { "margin-left": "490px" },
           attrs: { type: "button" },
           on: {
             click: function($event) {
@@ -45548,20 +45529,6 @@ var render = function() {
           }
         },
         [_vm._v("\n            Cancelar\n        ")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary",
-          attrs: { type: "button" },
-          on: {
-            click: function($event) {
-              return _vm.guardar()
-            }
-          }
-        },
-        [_vm._v("\n            Guardar Reservación\n        ")]
       ),
       _vm._v(" "),
       _c(
@@ -45726,21 +45693,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(ser.comment))]),
                 _vm._v(" "),
-                _c("td", [_vm._v("$" + _vm._s(ser.pay))]),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-danger",
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        return _vm.eliminar(ser.id)
-                      }
-                    }
-                  },
-                  [_c("i", { staticClass: "fas fa-trash" })]
-                )
+                _c("td", [_vm._v("$" + _vm._s(ser.pay))])
               ]
             )
           }),
@@ -45775,9 +45728,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Observación")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Valor a Pagar")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Acción")])
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Valor a Pagar")])
       ])
     ])
   }
@@ -46520,57 +46471,61 @@ var render = function() {
         _vm._v(" "),
         _c(
           "tbody",
-          _vm._l(_vm.reservations, function(ver) {
-            return _c("tr", { key: ver.id }, [
-              _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(ver.id))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(ver.service))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(ver.name))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(ver.email))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(ver.date))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(ver.time))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(ver.capacity))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(ver.state))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(ver.comment))]),
-              _vm._v(" "),
-              _c("td", [_vm._v("$" + _vm._s(ver.pay))]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-warning",
-                  attrs: { title: "Eliminar" },
-                  on: {
-                    click: function($event) {
-                      _vm.modificar = true
-                      _vm.abrirModal(ver)
+          _vm._l(_vm.createreservations, function(ver) {
+            return _c(
+              "tr",
+              { key: ver.id, staticStyle: { "font-weight": "bolder" } },
+              [
+                _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(ver.id))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(ver.service))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(ver.name))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(ver.email))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(ver.date))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(ver.time))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(ver.capacity))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(ver.state))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(ver.comment))]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$" + _vm._s(ver.pay))]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-warning",
+                    attrs: { title: "Eliminar" },
+                    on: {
+                      click: function($event) {
+                        _vm.modificar = true
+                        _vm.abrirModal(ver)
+                      }
                     }
-                  }
-                },
-                [_c("i", { staticClass: "fas fa-edit" })]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-danger",
-                  attrs: { title: "Eliminar" },
-                  on: {
-                    click: function($event) {
-                      return _vm.eliminar(ver.id)
+                  },
+                  [_c("i", { staticClass: "fas fa-edit" })]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger",
+                    attrs: { title: "Eliminar" },
+                    on: {
+                      click: function($event) {
+                        return _vm.eliminar(ver.id)
+                      }
                     }
-                  }
-                },
-                [_c("i", { staticClass: "fas fa-trash" })]
-              )
-            ])
+                  },
+                  [_c("i", { staticClass: "fas fa-trash" })]
+                )
+              ]
+            )
           }),
           0
         )
@@ -46776,16 +46731,27 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("table", { staticClass: "table table-success table-striped" }, [
+    _c("table", { staticClass: "table table-striped" }, [
       _vm._m(0),
       _vm._v(" "),
       _c("tbody", [
         _c("tr", [
-          _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(_vm.user.id))]),
+          _c(
+            "th",
+            {
+              staticStyle: { "font-weight": "bolder" },
+              attrs: { scope: "row" }
+            },
+            [_vm._v(_vm._s(_vm.user.id))]
+          ),
           _vm._v(" "),
-          _c("td", [_vm._v(" " + _vm._s(_vm.user.name))]),
+          _c("td", { staticStyle: { "font-weight": "bolder" } }, [
+            _vm._v(" " + _vm._s(_vm.user.name))
+          ]),
           _vm._v(" "),
-          _c("td", [_vm._v(_vm._s(_vm.user.email))]),
+          _c("td", { staticStyle: { "font-weight": "bolder" } }, [
+            _vm._v(_vm._s(_vm.user.email))
+          ]),
           _vm._v(" "),
           _c(
             "button",
@@ -46860,45 +46826,49 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("table", { staticClass: "table table-success table-striped" }, [
+    _c("table", { staticClass: "table table-striped" }, [
       _vm._m(0),
       _vm._v(" "),
       _c(
         "tbody",
         _vm._l(_vm.services, function(crear) {
-          return _c("tr", { key: crear.id }, [
-            _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(crear.id))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(crear.service))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(crear.description))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(crear.time1))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(crear.time2))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(crear.date1))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(crear.date2))]),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-danger",
-                attrs: { type: "button" },
-                on: {
-                  click: function($event) {
-                    return _vm.dirigir()
+          return _c(
+            "tr",
+            { key: crear.id, staticStyle: { "font-weight": "bolder" } },
+            [
+              _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(crear.id))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(crear.service))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(crear.description))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(crear.time1))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(crear.time2))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(crear.date1))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(crear.date2))]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-danger",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      return _vm.dirigir()
+                    }
                   }
-                }
-              },
-              [
-                _vm._v(
-                  "\n                        Reservalo ya!!\n                    "
-                )
-              ]
-            )
-          ])
+                },
+                [
+                  _vm._v(
+                    "\n                        Reservalo ya!!\n                    "
+                  )
+                ]
+              )
+            ]
+          )
         }),
         0
       )

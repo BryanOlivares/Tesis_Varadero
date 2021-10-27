@@ -24,11 +24,11 @@
 
     </style>
 </head>
-<body>
+<body style=" background-image: url('{{ asset('img/color2.jpg') }}'); background-size: cover; background-position: top center;align-items: center;">
     <header>
-        <h3 style="text-align: center;background-color: #81c6cf;">Centro Recreacional "El Varadero" </h3>
+        <h3 style="text-align: center; background-image: url('{{ asset('img/color2.jpg') }}'); background-size: cover; background-position: top center;align-items: center;">Centro Recreacional "El Varadero" </h3>
     </header>
-    <div class="container mt-4" style="background-color: #81c6cf">
+    <div class="container mt-4" style=" background-image: url('{{ asset('img/color2.jpg') }}'); background-size: cover; background-position: top center;align-items: center;">
         <div class="row">
             <div class="col-md-8">
                         {{ Form::open(['route' => 'reports.ver', 'method' => 'GET', 'class' => 'form-inline pull-right'])}}
@@ -56,7 +56,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <table class="table">
+                <table class="table" style=" background-image: url('{{ asset('img/color2.jpg') }}'); background-size: cover; background-position: top center;align-items: center;" >
                     <thead style="color: crimson;">
                       <tr>
                         <th scope="col" >#</th>
@@ -71,7 +71,7 @@
                         <th scope="col">Valor a pagar</th>
                       </tr>
                     </thead>
-                    <tbody style="color: mediumblue;">
+                    <tbody style="color: rgb(0, 0, 0);font-weight: bold">
                         @foreach ($aceptreservations as $aceptreservation)
                         <tr>
                         <th scope="row">{{$aceptreservation->id}}</th>
@@ -88,7 +88,7 @@
                         @endforeach
                     </tbody>
                   </table>
-                  <table class="table">
+                  <table class="table" style=" background-image: url('{{ asset('img/color2.jpg') }}'); background-size: cover; background-position: top center;align-items: center;">
                     @php
                             $total=0;
                             foreach($aceptreservations as $item)
@@ -97,7 +97,7 @@
                     <thead>
                         <tr>
                                 <th scope="col" style="color: crimson;">Reporte Total:</th>
-                                <th style="color: mediumblue;">${{$total}}</th>
+                                <th style="color: rgb(0, 0, 0);font-weight: bold">${{$total}}</th>
                         </tr>
                     </thead>
                     <tbody>

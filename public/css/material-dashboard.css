@@ -8865,7 +8865,7 @@ a.text-dark:focus {
 
 .btn.btn-primary.btn-link {
   background-color: transparent;
-  color: #9c27b0;
+  color:#47a1bc;
   box-shadow: none;
 }
 
@@ -16777,7 +16777,7 @@ label {
 .card.bg-primary,
 .card.card-rotate.bg-primary .front,
 .card.card-rotate.bg-primary .back {
-  background: linear-gradient(60deg, #ab47bc, #8e24aa);
+  background: linear-gradient(60deg, #47a1bc, #9fc4e9);
 }
 
 .card .card-header-info .card-icon,

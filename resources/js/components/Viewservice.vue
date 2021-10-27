@@ -1,6 +1,6 @@
 <template>
     <div >
-        <table class="table table-success table-striped">
+        <table class="table table-striped">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
@@ -14,7 +14,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="crear in services" :key="crear.id">
+                <tr v-for="crear in services" :key="crear.id" style=" font-weight: bolder;">
                     <th scope="row">{{crear.id}}</th>
                     <td>{{crear.service}}</td>
                     <td>{{crear.description}}</td>

@@ -25,8 +25,8 @@ class ServiceStoreRequest extends FormRequest
     {
         return [
           
-            'service'=>'required||alpha|min:4|max:30',
-            'description'=>'required|min:4|max:30',
+            'service'=>'required|string|min:4|max:30',
+            'description'=>'required|min:10|max:30',
             'time1'=>'required|after:8:59',
             'time2'=>'required|before:21:01',
             'date1'=>'required|date|after:yesterday',

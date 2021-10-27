@@ -13,7 +13,7 @@
                     <th scope="col">Estado</th>
                     <th scope="col">Observación</th>
                     <th scope="col">Valor a Pagar</th>
-                    <th scope="col">Acción</th>
+                    <!-- <th scope="col">Acción</th> -->
                 </tr>
             </thead>
             <tbody>
@@ -29,8 +29,8 @@
                     <td>{{ser.state}}</td>
                     <td>{{ser.comment}}</td>
                     <td>${{ser.pay}}</td>
-                     <button @click="eliminar(ser.id)" type="button" class="btn btn-danger"><i class="fas fa-trash"></i>
-                    </button>
+                     <!-- <button @click="eliminar(ser.id)" type="button" class="btn btn-danger"><i class="fas fa-trash"></i>
+                    </button> -->
                 </tr>
             </tbody>
         </table>
@@ -42,9 +42,7 @@ let user = document.head.querySelector('meta[name="user"]');
 export default {
     data() {
         return {
-            createreservations:{},
-    
-           
+            createreservations:{},   
     };
     
     },
@@ -66,10 +64,10 @@ export default {
             const res = await axios.get("/createreservations");
             this.createreservations = res.data;
         },
-        async eliminar(id) {
-            const res = await axios.delete("/createreservations/" + id);
-            this.listar();
-        },
+        // async eliminar(id) {
+        //     const res = await axios.delete("/createreservations/" + id);
+        //     this.listar();
+        // },
     
     },
     created() {

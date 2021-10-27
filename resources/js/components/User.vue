@@ -44,7 +44,7 @@
     </div>
   </div>
 </div>
-        <table class="table table-success table-striped">
+        <table class="table table-striped">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
@@ -55,9 +55,9 @@
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row" >{{user.id}}</th>
-                    <td> {{user.name}}</td>
-                    <td>{{user.email}}</td>
+                    <th scope="row" style=" font-weight: bolder;">{{user.id}}</th>
+                    <td style=" font-weight: bolder;"> {{user.name}}</td>
+                    <td style=" font-weight: bolder;">{{user.email}}</td>
                     <button @click="modificar = true; abrirModal(user)" class="btn btn-warning"><i class="fas fa-edit"></i>
                     </button>
                     <button @click="eliminar(user.id)" type="button" class="btn btn-danger"><i class="fas fa-trash"></i>
@@ -112,10 +112,12 @@ export default {
                 Swal.fire(
                 'Eliminado!',
                 'Usuario eliminado correctamente',
-                'success'
-                )  
-               window.location.href='/register';
+                'success',
+                
+                ) 
+                window.location.href='/register'
             }
+            
             })
           
             

@@ -23,9 +23,9 @@ class CreateReservationController extends Controller
     
     public function index()
     {
-        $user = Auth::user()->id;
-        return $createreservation=CreateReservation::where('user_id', $user)->get();
-        //return CreateReservation::get();
+        // $user = Auth::user()->id;
+        // return $createreservation=CreateReservation::where('user_id', $user)->get();
+        return CreateReservation::get();
     }
 
     /**
@@ -48,7 +48,8 @@ class CreateReservationController extends Controller
      */
     public function show(CreateReservation $createreservation)
     {
-        //return CreateReservation::all();
+        // return CreateReservation::all();
+      
     }
 
     /**

@@ -25,7 +25,7 @@ class UserStoreRequest extends FormRequest
     {
         return [
             'name'=> 'required|alpha|min:5|max:15',
-            'email'=> 'required|email|min:10|max:30',
+            'email'=> 'required|string|email|min:10|max:30',
         ];
     }
     public function messages()

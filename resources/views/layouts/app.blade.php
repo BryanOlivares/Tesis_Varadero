@@ -26,7 +26,9 @@
     <style>
 
         html{
-            background-image: url(img/var.jpg);
+            /* background-image: url(img/var.jpg); */
+            background-image: url('{{ asset('img/color2.jpg') }}'); background-size: cover; background-position: top center;align-items: center;
+            
             
         }
     </style>

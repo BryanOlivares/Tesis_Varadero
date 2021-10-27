@@ -12,7 +12,7 @@
         </form> -->
       </div>
       
-        <table class="table table-success table-striped">
+        <table class="table table-striped">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
@@ -30,7 +30,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="crear in aceptreservations" :key="crear.id">
+                <tr v-for="crear in aceptreservations" :key="crear.id" style=" font-weight: bolder;">
                     <th scope="row">{{crear.id}}</th>
                     <td>{{crear.service}}</td>
                     <td>{{crear.name}}</td>
@@ -83,16 +83,11 @@ export default {
       this.$router.replace("/reports");
       this.listar();
     },
-    // loadData(){
-    //   axios.get("/aceptreservations", {params : this.params}).then(response =>{
-    //     this.data = response.data.records;
-    //   });
-    // }
-    // async eliminar(id) {
-    //         const res = await axios.delete("/aceptreservations/" + id);  
-    //         this.listar();
-    //     },
-    
+
+    async eliminar(id) {
+            const res = await axios.delete("/aceptreservations/" + id);  
+            this.listar();
+        },
 
   //   createPDF () {
   //   let pdfName = 'test'; 

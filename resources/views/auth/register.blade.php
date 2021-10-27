@@ -10,7 +10,7 @@
         <div class="card card-login card-hidden mb-3">
           <div class="card-header card-header-primary text-center">
             <h4 class="card-title"><strong>{{ __('Registrarse') }}</strong></h4>
-            <div class="social-line">
+            {{-- <div class="social-line">
               <a href="https://www.facebook.com/" class="btn btn-just-icon btn-link btn-white">
                 <i class="fa fa-facebook-square"></i>
               </a>
@@ -20,7 +20,7 @@
               <a href="https://accounts.google.com/signin/v2/identifier?hl=es&flowName=GlifWebSignIn&flowEntry=ServiceLogin" class="btn btn-just-icon btn-link btn-white">
                 <i class="fa fa-google-plus"></i>
               </a>
-            </div>
+            </div> --}}
           </div>
           <div class="card-body ">
        
@@ -98,7 +98,7 @@
             </div-->
           </div>
           <div class="card-footer justify-content-center">
-            <button type="submit" class="btn btn-primary btn-link btn-lg">{{ __('Registrarse') }}</button>
+            <button type="submit" class="btn btn-primary btn-link btn-lg" style="font-weight: bold;">{{ __('Registrarse') }}</button>
           </div>
         </div>
       </form>

@@ -208,13 +208,13 @@
                 @click="cerrarform()"
                 type="button"
                 class="btn btn-secondary"
-                style="margin-left: 390px;"
+                style="margin-left: 490px;"
             >
                 Cancelar
             </button>
-            <button @click="guardar()" type="button" class="btn btn-primary">
+            <!-- <button @click="guardar()" type="button" class="btn btn-primary">
                 Guardar Reservación
-            </button>
+            </button> -->
             <button @click="guardar1()" type="button" class="btn btn-success">
                 Enviar Reservación
             </button>
@@ -253,7 +253,7 @@ export default {
     methods: {
         async guardar1() {
             const res = await axios
-                .post("reservations", this.fields)
+                .post("createreservations", this.fields)
                 .then(response => {
                     this.$swal({
                         icon: "success",
@@ -267,22 +267,22 @@ export default {
                     }
                 });
         },
-        async guardar() {
-            const res = await axios
-                .post("createreservations", this.fields)
-                .then(response => {
-                    this.$swal({
-                        icon: "success",
-                        title: "Reservación Guardada"
-                    });
-                    this.$router.push("/createreservations");
-                })
-                .catch(error => {
-                    if (error.response.status === 422) {
-                        this.errors = error.response.data.errors;
-                    }
-                });
-        },
+        // async guardar() {
+        //     const res = await axios
+        //         .post("createreservations", this.fields)
+        //         .then(response => {
+        //             this.$swal({
+        //                 icon: "success",
+        //                 title: "Reservación Guardada"
+        //             });
+        //             this.$router.push("/createreservations");
+        //         })
+        //         .catch(error => {
+        //             if (error.response.status === 422) {
+        //                 this.errors = error.response.data.errors;
+        //             }
+        //         });
+        // },
         async listar() {
             const res = await axios.get("/services");
             this.services = res.data;

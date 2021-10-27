@@ -103,7 +103,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="ver in reservations" :key="ver.id">
+                <tr v-for="ver in createreservations" :key="ver.id" style=" font-weight: bolder;">
                     <th scope="row">{{ver.id}}</th>
                     <td>{{ver.service}}</td>
                     <td>{{ver.name}}</td>
@@ -129,17 +129,17 @@ export default {
     data() {
         
         return {
-            reservation: {
-                service: "",
-                name: "",
-                email: "",
-                date: "",
-                time: "",
-                capacity: "",
-                state: "",
-                comment: "",
-                pay: ""
-            },
+            // reservation: {
+            //     service: "",
+            //     name: "",
+            //     email: "",
+            //     date: "",
+            //     time: "",
+            //     capacity: "",
+            //     state: "",
+            //     comment: "",
+            //     pay: ""
+            // },
             createreservation: {
                 service: "",
                 name: "",
@@ -156,17 +156,17 @@ export default {
             modificar: true,
             modal: 0,
             tituloModal: "",
-            reservations: [],
+            // reservations: [],
             createreservations: [],
         };
     },
     methods: {
         async listar() {
-            const res = await axios.get("/reservations");
-            this.reservations = res.data;
+            const res = await axios.get("/createreservations");
+            this.createreservations = res.data;
         },
         async eliminar(id) {
-            const res = await axios.delete("/reservations/" + id);
+            const res = await axios.delete("/createreservations/" + id);
             this.listar();
         },
         async guardar() {
