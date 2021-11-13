@@ -9,8 +9,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable //implements MustVerifyEmail
 {
-    
-
+    use HasFactory, Notifiable;
     /**
      * The attributes that are mass assignable.
      *
@@ -19,7 +18,6 @@ class User extends Authenticatable //implements MustVerifyEmail
     protected $fillable = [
         'name',
         'email',
-        //'codigo_rol',
         'password',
        
 

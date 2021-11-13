@@ -1,5 +1,6 @@
 <template>
     <div >
+      
         <!-- The Modal -->
         <div class="modal" :class="{ mostrar: modal }">
             <div class="modal-dialog">
@@ -32,10 +33,10 @@
                         
                         <div class="my-1">
                            <h5 class="text-center" style="padding-right: 1115px;  font-weight: bold;">Estado:</h5>
-                            <select class="custom-select" v-model="createreservation.state" style="width: 237px; margin-left: 0px;">
-                            <option>Pendiente</option>
-                            <option>Reserva Rechazada</option>
-                            <option>Reserva Aceptada</option>
+                            <select class="custom-select" v-model="createreservation.state"   style="width: 237px; margin-left: 0px;">
+                            <option value="Pendiente">Pendiente</option>
+                            <option value="Reserva Rechazada">Reserva Rechazada</option>
+                            <option value="Reserva Aceptada">Reserva Aceptada</option>
                             </select>
                         </div>
                         <div class="my-1">
@@ -47,7 +48,7 @@
                                 id="comment"
                                 placeholder="Observaciones">
                         </div>
-                        <div class="my-1">
+                        <div v-if="createreservation.state =='Reserva Aceptada'" class="my-1">
                             <label for="nombre">Valor a pagar</label>
                             <input
                                 v-model="createreservation.pay"
@@ -72,7 +73,7 @@
                         ><i class="fas fa-edit"></i>
                             Actualizar
                         </button>
-                        <button
+                        <button v-if="createreservation.state =='Reserva Aceptada'"
                             @click="guardar()"
                             type="button"
                             class="btn btn-success"
@@ -114,7 +115,7 @@
                     <td>{{ver.state}}</td>
                     <td>{{ver.comment}}</td>
                     <td>${{ver.pay}}</td>
-                    <button @click="modificar = true; abrirModal(ver);" class="btn btn-warning" title="Eliminar"><i class="fas fa-edit"></i>
+                    <button  v-if="ver.state =='Reserva Aceptada'" @click="modificar = true; abrirModal(ver);" class="btn btn-warning" title="Editar"><i class="fas fa-edit"></i>
                     </button>
                     <button @click="eliminar(ver.id)" class="btn btn-danger" title="Eliminar"><i class="fas fa-trash"></i></button>
                         
@@ -187,12 +188,14 @@ export default {
             const res=await axios.put('/createreservations/'+ this.id, this.createreservation)
             .then(response =>{
                         this.$swal({icon:'success', title:'Reservación Actualizada'})
+                        
                 }).catch(error => {
                     if(error.response.status === 422){
                         this.$swal({icon:'error', title:'Ocurrio un error'})
                         this.errors = error.response.data.errors;
                     }
                 });
+                 this.listar();
         },
         abrirModal(data = {}) {
             this.modal = 1;

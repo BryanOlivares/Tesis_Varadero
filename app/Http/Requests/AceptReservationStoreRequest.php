@@ -25,8 +25,8 @@ class AceptReservationStoreRequest extends FormRequest
     {
         return [
             'state' => 'required',
-            'comment'=> 'required|min:1|max:25',
-            'pay'=> 'required|numeric'
+            'comment'=> 'required|min:10|max:30',
+            'pay'=> 'required|numeric|min:5|max:30|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/'
         ];
     }
     public function messages()
@@ -40,6 +40,8 @@ class AceptReservationStoreRequest extends FormRequest
             'pay.numeric' =>'El campo Valor a pagar solo admite numeros',
             'pay.min' =>'El campo Valor a pagar no puede ser menor a :min',
             'pay.max' =>'El campo Valor a pagar no puede ser mayor a :max',
+            'pay.between' =>'El campo no acepta valores negativos',
+            // 'service.unique' =>'El servicio ya fue tomado, debe escoger otro',
         ];
     }
 }

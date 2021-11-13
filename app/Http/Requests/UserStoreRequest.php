@@ -39,6 +39,7 @@ class UserStoreRequest extends FormRequest
             'email.required' => 'El campo Email es requerido',
             'email.min' => 'El campo Email debe tener almenos :min letras',
             'email.max' => 'El campo Email debe tener máximo :max letras', 
+            // 'email.unique' => 'El  Email ya existe', 
             
            
         ];

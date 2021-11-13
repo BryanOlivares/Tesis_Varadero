@@ -235,7 +235,7 @@ export default {
                 date: "",
                 time: "",
                 capacity: "",
-                state: "Pendiente",
+                state: "Reserva Aceptada",
                 comment: "Pendiente",
                 pay: 0
             },

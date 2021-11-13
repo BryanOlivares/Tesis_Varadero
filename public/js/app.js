@@ -2547,7 +2547,7 @@ var _user = document.head.querySelector('meta[name="user"]');
         date: "",
         time: "",
         capacity: "",
-        state: "Pendiente",
+        state: "Reserva Aceptada",
         comment: "Pendiente",
         pay: 0
       },
@@ -3307,6 +3307,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -3462,7 +3463,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 res = _context4.sent;
 
-              case 3:
+                _this4.listar();
+
+              case 4:
               case "end":
                 return _context4.stop();
             }
@@ -46317,11 +46320,17 @@ var render = function() {
                       }
                     },
                     [
-                      _c("option", [_vm._v("Pendiente")]),
+                      _c("option", { attrs: { value: "Pendiente" } }, [
+                        _vm._v("Pendiente")
+                      ]),
                       _vm._v(" "),
-                      _c("option", [_vm._v("Reserva Rechazada")]),
+                      _c("option", { attrs: { value: "Reserva Rechazada" } }, [
+                        _vm._v("Reserva Rechazada")
+                      ]),
                       _vm._v(" "),
-                      _c("option", [_vm._v("Reserva Aceptada")])
+                      _c("option", { attrs: { value: "Reserva Aceptada" } }, [
+                        _vm._v("Reserva Aceptada")
+                      ])
                     ]
                   )
                 ]),
@@ -46362,41 +46371,43 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "my-1" }, [
-                  _c("label", { attrs: { for: "nombre" } }, [
-                    _vm._v("Valor a pagar")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.createreservation.pay,
-                        expression: "createreservation.pay"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "number",
-                      id: "pay",
-                      placeholder: "Valor a pagar"
-                    },
-                    domProps: { value: _vm.createreservation.pay },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                _vm.createreservation.state == "Reserva Aceptada"
+                  ? _c("div", { staticClass: "my-1" }, [
+                      _c("label", { attrs: { for: "nombre" } }, [
+                        _vm._v("Valor a pagar")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.createreservation.pay,
+                            expression: "createreservation.pay"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "number",
+                          id: "pay",
+                          placeholder: "Valor a pagar"
+                        },
+                        domProps: { value: _vm.createreservation.pay },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.createreservation,
+                              "pay",
+                              $event.target.value
+                            )
+                          }
                         }
-                        _vm.$set(
-                          _vm.createreservation,
-                          "pay",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ]),
+                      })
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
                 _c(
                   "button",
@@ -46435,24 +46446,26 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-success",
-                    attrs: { type: "button", "data-dismiss": "modal" },
-                    on: {
-                      click: function($event) {
-                        return _vm.guardar()
-                      }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "fas fa-save" }),
-                    _vm._v(
-                      "\n                        Aceptar Reservación\n                    "
+                _vm.createreservation.state == "Reserva Aceptada"
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        attrs: { type: "button", "data-dismiss": "modal" },
+                        on: {
+                          click: function($event) {
+                            return _vm.guardar()
+                          }
+                        }
+                      },
+                      [
+                        _c("i", { staticClass: "fas fa-save" }),
+                        _vm._v(
+                          "\n                        Aceptar Reservación\n                    "
+                        )
+                      ]
                     )
-                  ]
-                )
+                  : _vm._e()
               ]
             )
           ]
@@ -46496,20 +46509,22 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v("$" + _vm._s(ver.pay))]),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-warning",
-                    attrs: { title: "Eliminar" },
-                    on: {
-                      click: function($event) {
-                        _vm.modificar = true
-                        _vm.abrirModal(ver)
-                      }
-                    }
-                  },
-                  [_c("i", { staticClass: "fas fa-edit" })]
-                ),
+                ver.state == "Reserva Aceptada"
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-warning",
+                        attrs: { title: "Editar" },
+                        on: {
+                          click: function($event) {
+                            _vm.modificar = true
+                            _vm.abrirModal(ver)
+                          }
+                        }
+                      },
+                      [_c("i", { staticClass: "fas fa-edit" })]
+                    )
+                  : _vm._e(),
                 _vm._v(" "),
                 _c(
                   "button",

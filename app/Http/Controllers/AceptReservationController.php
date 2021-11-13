@@ -52,7 +52,7 @@ class AceptReservationController extends Controller
      * @param  \App\Models\AceptReservation  $aceptReservation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AceptReservation $aceptReservation)
+    public function update(AceptReservationStoreRequest $request, AceptReservation $aceptReservation)
     {
         //
     }
