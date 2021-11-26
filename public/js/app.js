@@ -2547,7 +2547,7 @@ var _user = document.head.querySelector('meta[name="user"]');
         date: "",
         time: "",
         capacity: "",
-        state: "Reserva Aceptada",
+        state: "Pendiente",
         comment: "Pendiente",
         pay: 0
       },
@@ -3308,6 +3308,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -3338,7 +3347,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       modal: 0,
       tituloModal: "",
       // reservations: [],
-      createreservations: []
+      createreservations: [],
+      errores: {}
     };
   },
   methods: {
@@ -3438,39 +3448,56 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
-        var res;
+        var res, _res;
+
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                _context4.next = 2;
-                return axios.put('/createreservations/' + _this4.id, _this4.createreservation).then(function (response) {
-                  _this4.$swal({
-                    icon: 'success',
-                    title: 'Reservación Actualizada'
-                  });
-                })["catch"](function (error) {
-                  if (error.response.status === 422) {
-                    _this4.$swal({
-                      icon: 'error',
-                      title: 'Ocurrio un error'
-                    });
+                _context4.prev = 0;
 
-                    _this4.errors = error.response.data.errors;
-                  }
-                });
+                if (!_this4.modificar) {
+                  _context4.next = 7;
+                  break;
+                }
 
-              case 2:
+                _context4.next = 4;
+                return axios.put("/createreservations/" + _this4.id, _this4.createreservation);
+
+              case 4:
                 res = _context4.sent;
+                _context4.next = 10;
+                break;
+
+              case 7:
+                _context4.next = 9;
+                return axios.post("/services", _this4.service);
+
+              case 9:
+                _res = _context4.sent;
+
+              case 10:
+                _this4.cerrarModal();
 
                 _this4.listar();
 
-              case 4:
+                _context4.next = 17;
+                break;
+
+              case 14:
+                _context4.prev = 14;
+                _context4.t0 = _context4["catch"](0);
+
+                if (_context4.t0.response.data) {
+                  _this4.errores = _context4.t0.response.data.errors;
+                }
+
+              case 17:
               case "end":
                 return _context4.stop();
             }
           }
-        }, _callee4);
+        }, _callee4, null, [[0, 14]]);
       }))();
     },
     abrirModal: function abrirModal() {
@@ -46368,7 +46395,13 @@ var render = function() {
                         )
                       }
                     }
-                  })
+                  }),
+                  _vm._v(" "),
+                  _vm.errores.comment
+                    ? _c("span", { staticClass: "text-danger" }, [
+                        _vm._v(_vm._s(_vm.errores.comment[0]))
+                      ])
+                    : _vm._e()
                 ]),
                 _vm._v(" "),
                 _vm.createreservation.state == "Reserva Aceptada"
@@ -46405,7 +46438,13 @@ var render = function() {
                             )
                           }
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _vm.errores.pay
+                        ? _c("span", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errores.pay[0]))
+                          ])
+                        : _vm._e()
                     ])
                   : _vm._e(),
                 _vm._v(" "),
@@ -46444,28 +46483,7 @@ var render = function() {
                       "\n                        Actualizar\n                    "
                     )
                   ]
-                ),
-                _vm._v(" "),
-                _vm.createreservation.state == "Reserva Aceptada"
-                  ? _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-success",
-                        attrs: { type: "button", "data-dismiss": "modal" },
-                        on: {
-                          click: function($event) {
-                            return _vm.guardar()
-                          }
-                        }
-                      },
-                      [
-                        _c("i", { staticClass: "fas fa-save" }),
-                        _vm._v(
-                          "\n                        Aceptar Reservación\n                    "
-                        )
-                      ]
-                    )
-                  : _vm._e()
+                )
               ]
             )
           ]
@@ -46509,7 +46527,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v("$" + _vm._s(ver.pay))]),
                 _vm._v(" "),
-                ver.state == "Reserva Aceptada"
+                ver.state !== "Reserva Rechazada"
                   ? _c(
                       "button",
                       {
@@ -46538,7 +46556,28 @@ var render = function() {
                     }
                   },
                   [_c("i", { staticClass: "fas fa-trash" })]
-                )
+                ),
+                _vm._v(" "),
+                ver.state == "Reserva Aceptada"
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        attrs: { type: "button", "data-dismiss": "modal" },
+                        on: {
+                          click: function($event) {
+                            return _vm.guardar()
+                          }
+                        }
+                      },
+                      [
+                        _c("i", { staticClass: "fas fa-save" }),
+                        _vm._v(
+                          "\n                        Aceptar Reservación\n                    "
+                        )
+                      ]
+                    )
+                  : _vm._e()
               ]
             )
           }),

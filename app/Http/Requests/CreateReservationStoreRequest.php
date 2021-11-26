@@ -31,8 +31,8 @@ class CreateReservationStoreRequest extends FormRequest
             'time'=> 'required|after:8:59|before:21:01',
             'capacity'=> 'required|numeric|min:1|max:5',
             'state' => 'required',
-            'comment'=> 'required|min:5|max:30',
-            'pay'=> 'required|numeric'
+            'comment'=> 'required|min:5|max:40',
+            'pay'=> 'required|numeric|min:0|max:30|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/'
         ];
     }
     public function messages()
@@ -51,8 +51,12 @@ class CreateReservationStoreRequest extends FormRequest
             'capacity.numeric' => 'La Cant. de usuarios debe ser un número',
             'capacity.min' =>'La cantidad de usuarios no puede ser menor a :min',
             'capacity.max' =>'La cantidad de usuarios no puede ser mayor a :max',
+            'comment.required' =>'El campo Observaciones es requerido',
             'comment.min' =>'Las observaciones no puede tener menos de :min caracteres',
             'comment.max' =>'Las observaciones no puede tener más de :max caracteres',
+            'pay.required' =>'El campo Valor a pagar es requerido',
+            'pay.min' =>'El valor a pagar debe ser mayor a :min dólares',
+            'pay.max' =>'El valor a pagar debe ser menor a :max dólares',
             'service.unique' =>'El servicio ya fue tomado, debe escoger otro',
         ];
     }

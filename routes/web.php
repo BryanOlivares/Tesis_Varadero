@@ -33,13 +33,14 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
 
+
 Route::get('/reports', [FileController::class, 'index'])->name('reports.ver')->middleware('verified');
 Route::get('/reports/pdf', [FileController::class, 'exportPdf'])->name('reports.descargar')->middleware('verified');
-Route::apiResource('/services', ServiceController::class)->names('services')->middleware('verified');
-Route::apiResource('/reservations', ReservationController::class)->names('reservations')->middleware('verified');
-Route::apiResource('/createreservations', CreateReservationController::class)->names('createreservations')->middleware('verified');
-Route::apiResource('/history', HistoryController::class)->names('history')->middleware('verified');
-Route::apiResource('/aceptreservations',  AceptReservationController::class)->names('aceptreservations')->middleware('verified');
-Route::apiResource('/users', UserController::class)->names('users')->middleware('verified');
-Route::apiResource('/download_files', FileController::class)->names('download_files')->middleware('verified');
-Route::apiResource('/view_reservations', ViewController::class)->names('view_reservations')->middleware('verified');
+Route::resource('/services', ServiceController::class)->names('services')->middleware('verified');
+Route::resource('/reservations', ReservationController::class)->names('reservations')->middleware('verified');
+Route::resource('/createreservations', CreateReservationController::class)->names('createreservations')->middleware('verified');
+Route::resource('/history', HomeController::class)->names('history')->middleware('verified');
+Route::resource('/aceptreservations',  AceptReservationController::class)->names('aceptreservations')->middleware('verified');
+Route::resource('/users', UserController::class)->names('users')->middleware('verified');
+Route::resource('/download_files', FileController::class)->names('download_files')->middleware('verified');
+Route::resource('/view_reservations', ViewController::class)->names('view_reservations')->middleware('verified');

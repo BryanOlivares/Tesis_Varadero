@@ -16,10 +16,8 @@ class HistoryController extends Controller
      */
     public function index()
     {
-    
-   
-        //return CreateReservation::get();
-        return view('history');
+        $user = Auth::user()->id;
+        return $createreservation=CreateReservation::where('user_id', $user)->get();
     
     }
 

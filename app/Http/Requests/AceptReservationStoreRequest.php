@@ -25,7 +25,7 @@ class AceptReservationStoreRequest extends FormRequest
     {
         return [
             'state' => 'required',
-            'comment'=> 'required|min:10|max:30',
+            'comment'=> 'required|min:10|max:40',
             'pay'=> 'required|numeric|min:5|max:30|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/'
         ];
     }
@@ -35,7 +35,7 @@ class AceptReservationStoreRequest extends FormRequest
             
             'state.required' =>'El campo Estado es requerido',
             'comment.min' =>'El campo Observaciones debe tener almenos :min caracteres',
-            'comment.max' =>'El campo Observaciones debe tener almenos :max caracteres',
+            'comment.max' =>'El campo Observaciones no debe tener más de :max caracteres',
             'pay.required' =>'El campo Valor a pagar es requerido',
             'pay.numeric' =>'El campo Valor a pagar solo admite numeros',
             'pay.min' =>'El campo Valor a pagar no puede ser menor a :min',

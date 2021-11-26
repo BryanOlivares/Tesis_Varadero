@@ -25,8 +25,8 @@ class ServiceStoreRequest extends FormRequest
     {
         return [
           
-            'service'=>'required|string|min:4|max:30',
-            'description'=>'required|min:10|max:30',
+            'service'=>'required|string|min:4|max:20',
+            'description'=>'required|string|min:10|max:25',
             'time1'=>'required|after:8:59',
             'time2'=>'required|before:21:01',
             'date1'=>'required|date|after:yesterday',
@@ -41,7 +41,6 @@ class ServiceStoreRequest extends FormRequest
             'service.required' => 'El campo Servicio es requerido.',
             'service.min' => 'El campo nombre del servicio debe tener mínimo :min',
             'service.max' => 'El campo nombre del servicio debe tener máximo :max',
-            'service.alpha' => 'El campo Servicio solo admite letras',
             'description.required' => 'El campo Descripción es requerido',
             'description.min' => 'La Descripción debe tener mínimo :min',
             'description.max' => 'La Descripción debe tener máximo :max',

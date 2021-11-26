@@ -28,11 +28,11 @@ class ReservationStoreRequest extends FormRequest
             'name'=> 'required',
             'email'=> 'required',
             'date'=> 'required|date|after:yesterday',
-            'time'=> 'required|after:8:59|before:21:01',
+            'time'=> 'required|after:8:59|before:20:01',
             'capacity'=> 'required|numeric|min:1|max:5', 
             'state' => 'required',
-            'comment'=> 'required',
-            'pay'=> 'required'
+            'comment'=> 'required|alpha',
+            'pay'=> 'required|numeric|min:0|max:30'
         ];
     }
     public function messages()

@@ -47,6 +47,7 @@
                                 class="form-control"
                                 id="comment"
                                 placeholder="Observaciones">
+                                <span class="text-danger" v-if="errores.comment">{{errores.comment[0]}}</span>
                         </div>
                         <div v-if="createreservation.state =='Reserva Aceptada'" class="my-1">
                             <label for="nombre">Valor a pagar</label>
@@ -56,6 +57,7 @@
                                 class="form-control"
                                 id="pay"
                                 placeholder="Valor a pagar">
+                                <span class="text-danger" v-if="errores.pay">{{errores.pay[0]}}</span>
                         </div>
                         <button
                             @click="cerrarModal()"
@@ -73,14 +75,14 @@
                         ><i class="fas fa-edit"></i>
                             Actualizar
                         </button>
-                        <button v-if="createreservation.state =='Reserva Aceptada'"
+                        <!-- <button v-if="createreservation.state =='Reserva Aceptada'"
                             @click="guardar()"
                             type="button"
                             class="btn btn-success"
                             data-dismiss="modal"
                         ><i class="fas fa-save"></i>
                             Aceptar Reservación
-                        </button>
+                        </button> -->
                     </div>
 
                 </div>
@@ -115,10 +117,17 @@
                     <td>{{ver.state}}</td>
                     <td>{{ver.comment}}</td>
                     <td>${{ver.pay}}</td>
-                    <button  v-if="ver.state =='Reserva Aceptada'" @click="modificar = true; abrirModal(ver);" class="btn btn-warning" title="Editar"><i class="fas fa-edit"></i>
+                    <button  v-if="ver.state !=='Reserva Rechazada'" @click="modificar = true; abrirModal(ver);" class="btn btn-warning" title="Editar"><i class="fas fa-edit"></i>
                     </button>
                     <button @click="eliminar(ver.id)" class="btn btn-danger" title="Eliminar"><i class="fas fa-trash"></i></button>
-                        
+                    <button v-if="ver.state =='Reserva Aceptada'"
+                            @click="guardar()"
+                            type="button"
+                            class="btn btn-success"
+                            data-dismiss="modal"
+                        ><i class="fas fa-save"></i>
+                            Aceptar Reservación
+                        </button>   
                    
                 </tr>
             </tbody>
@@ -159,6 +168,7 @@ export default {
             tituloModal: "",
             // reservations: [],
             createreservations: [],
+            errores:{},
         };
     },
     methods: {
@@ -185,17 +195,23 @@ export default {
             this.listar();
         },
         async guardar1(){
-            const res=await axios.put('/createreservations/'+ this.id, this.createreservation)
-            .then(response =>{
-                        this.$swal({icon:'success', title:'Reservación Actualizada'})
-                        
-                }).catch(error => {
-                    if(error.response.status === 422){
-                        this.$swal({icon:'error', title:'Ocurrio un error'})
-                        this.errors = error.response.data.errors;
-                    }
-                });
-                 this.listar();
+            try {
+                if (this.modificar) {
+                const res = await axios.put(
+                    "/createreservations/" + this.id,
+                    this.createreservation
+                );
+            } else {
+                const res = await axios.post("/services", this.service);
+            }
+            this.cerrarModal();
+            this.listar();
+                
+            } catch (error) {
+                if(error.response.data){
+                    this.errores=error.response.data.errors
+                }
+            }
         },
         abrirModal(data = {}) {
             this.modal = 1;

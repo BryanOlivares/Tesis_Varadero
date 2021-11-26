@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\CreateReservation;
 use App\Models\Reservation;
+use App\Http\Requests\AceptReservationStoreRequest;
 use App\Http\Requests\CreateReservationStoreRequest;
 use App\Models\Service;
 use App\Models\User;
@@ -25,6 +26,14 @@ class CreateReservationController extends Controller
     {
         // $user = Auth::user()->id;
         // return $createreservation=CreateReservation::where('user_id', $user)->get();
+        // $user = Auth::user()->id;
+        // $createreservation=CreateReservation::where('user_id', $user)->get();
+        // return $reserva=$createReservation->unique('service')
+        return CreateReservation::get();
+    }
+    public function verreservaciones()
+    {
+       
         return CreateReservation::get();
     }
 
@@ -48,7 +57,8 @@ class CreateReservationController extends Controller
      */
     public function show(CreateReservation $createreservation)
     {
-        // return CreateReservation::all();
+        $user = Auth::user()->id;
+        return $createreservation=CreateReservation::where('user_id', $user)->get();
       
     }
 
@@ -59,9 +69,9 @@ class CreateReservationController extends Controller
      * @param  \App\Models\CreateReservation  $createReservation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CreateReservation $createreservation)
+    public function update(AceptReservationStoreRequest $request, CreateReservation $createreservation)
     {
-        $createreservation->update($request->all());
+        $createreservation->update($request->validated());
     }
     
 

@@ -16,7 +16,7 @@ class ReservationController extends Controller
      */
     public function index()
     {
-         return Reservation::get();;
+         return CreateReservation::get();
         //return view('verreservation');
     }
 
