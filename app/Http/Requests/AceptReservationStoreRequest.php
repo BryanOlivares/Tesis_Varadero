@@ -34,6 +34,7 @@ class AceptReservationStoreRequest extends FormRequest
         return [
             
             'state.required' =>'El campo Estado es requerido',
+            'comment.required' =>'El campo Observaciones es requerido',
             'comment.min' =>'El campo Observaciones debe tener almenos :min caracteres',
             'comment.max' =>'El campo Observaciones no debe tener más de :max caracteres',
             'pay.required' =>'El campo Valor a pagar es requerido',

@@ -1,10 +1,8 @@
 <template>
     <div >
       <div class="pdf">
-       <!-- <button @click="createPDF" type="button" class="btn btn-dark"><i class="fas fa-directions"></i>
-            Ir a la Descarga
-        </button> -->
-        <button class="btn btn-dark" onclick="window.location.href='/reports'"><i class="fas fa-directions"></i> Ir a los reportes</button>
+       <button class="btn btn-dark" onclick="window.location.href='/reports/pdf'"><i class="fas fa-directions"></i> Descargar reporte total</button>
+        <button class="btn btn-dark" onclick="window.location.href='/reports'"><i class="fas fa-directions"></i> Descargar reportes por fechas</button>
 
         <!-- <form class="form-inline my-2 my-lg-0 float-right">
           <input class="form-control mr-sm-2" v-model="params.fbuscar" type="search" placeholder="Search" aria-label="Search">

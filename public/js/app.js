@@ -2135,8 +2135,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
 // import jsPDF from 'jspdf'
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   // name:'pdf',
@@ -44795,11 +44793,23 @@ var staticRenderFns = [
         "button",
         {
           staticClass: "btn btn-dark",
+          attrs: { onclick: "window.location.href='/reports/pdf'" }
+        },
+        [
+          _c("i", { staticClass: "fas fa-directions" }),
+          _vm._v(" Descargar reporte total")
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-dark",
           attrs: { onclick: "window.location.href='/reports'" }
         },
         [
           _c("i", { staticClass: "fas fa-directions" }),
-          _vm._v(" Ir a los reportes")
+          _vm._v(" Descargar reportes por fechas")
         ]
       )
     ])
