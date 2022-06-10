@@ -26,7 +26,7 @@ class AceptReservationStoreRequest extends FormRequest
         return [
             'state' => 'required',
             'comment'=> 'required|min:10|max:40',
-            'pay'=> 'required|numeric|min:5|max:30|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/'
+            'pay'=> 'required|numeric|min:0|max:30|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/'
         ];
     }
     public function messages()
